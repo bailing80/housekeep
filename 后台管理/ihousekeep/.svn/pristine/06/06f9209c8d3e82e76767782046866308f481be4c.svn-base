@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.servicecontent.dao.ServiceContent_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.servicecontent.domain.ServiceContent_lowerlevelbeen" id="result_T_u_service_content"/>
+<parameterMap type="com.ccunix.ihousekeeping.servicecontent.domain.ServiceContent_lowerlevelbeen" id="param_T_u_service_content"/>
+<insert id="insert_t_u_service_content" parameterMap="param_T_u_service_content" >
+insert into t_u_service_content   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="service_item_id != null and service_item_id != ''">
+service_item_id,
+ </if>
+<if test="content_name != null and content_name != ''">
+content_name,
+ </if>
+<if test="content_key != null and content_key != ''">
+content_key,
+ </if>
+<if test="content_type != null and content_type != ''">
+content_type,
+ </if>
+<if test="content_value != null and content_value != ''">
+content_value,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="service_item_id != null and service_item_id != ''">
+#{service_item_id},
+ </if>
+<if test="content_name != null and content_name != ''">
+#{content_name},
+ </if>
+<if test="content_key != null and content_key != ''">
+#{content_key},
+ </if>
+<if test="content_type != null and content_type != ''">
+#{content_type},
+ </if>
+<if test="content_value != null and content_value != ''">
+#{content_value},
+ </if>
+</trim>
+</insert>
+
+
+<update id="delete_t_u_service_content" parameterMap="param_T_u_service_content" >
+update t_u_service_content set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+
+
+<update id="update_t_u_service_content" parameterMap="param_T_u_service_content" >
+update t_u_service_content   
+<set>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="service_item_id != null and service_item_id != ''">
+service_item_id=#{service_item_id},
+ </if>
+<if test="content_name != null and content_name != ''">
+content_name=#{content_name},
+ </if>
+<if test="content_key != null and content_key != ''">
+content_key=#{content_key},
+ </if>
+<if test="content_type != null and content_type != ''">
+content_type=#{content_type},
+ </if>
+<if test="content_value != null and content_value != ''">
+content_value=#{content_value},
+ </if>
+</set>
+ where id=#{id}
+</update>
+
+
+<select id="queryAll_Servicecontent_lowerlevel" parameterMap="param_T_u_service_content"  resultMap="result_T_u_service_content">
+select  rownum rownumber,ID,CREATOR,UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER,service_item_id,content_name,content_key,content_type,content_value
+ from T_U_SERVICE_CONTENT where IS_DELETE != 1
+ 
+ <if test="keyword != '' and keyword != null ">
+ and content_name like concat('%',concat(#{keyword},'%'))
+ </if>
+ <if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="service_item_id != null and service_item_id != ''">
+ and service_item_id=#{service_item_id}
+ </if>
+<if test="content_name != null and content_name != ''">
+ and content_name=#{content_name}
+ </if>
+<if test="content_key != null and content_key != ''">
+ and content_key=#{content_key}
+ </if>
+<if test="content_type != null and content_type != ''">
+ and content_type=#{content_type}
+ </if>
+<if test="content_value != null and content_value != ''">
+ and content_value=#{content_value}
+ </if>
+</select>
+</mapper>

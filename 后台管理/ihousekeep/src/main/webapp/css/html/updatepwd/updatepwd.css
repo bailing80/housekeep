@@ -1,0 +1,28 @@
+#updatepwd_box{
+	padding-left: 25vw;
+	padding-top: 10vw;
+}
+.pwd_lable{
+	max-width: 100vw;
+	width: 100px;
+}
+.pwd_lis_box{
+	display: flex;
+	margin-top: 30px;
+}
+.pwd_form{
+	box-shadow: 0px 5px 15px rgba(205,163,23,0.5);
+	padding: 20px;
+	background-color: #ececec;
+	width: 35vw;
+}
+.pwd_form input{
+	height: 26px;
+}
+#btn_res{
+	margin-left: 30%;
+	margin-right: 10%;
+}
+.error{
+	color:red;
+}

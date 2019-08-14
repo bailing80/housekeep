@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_u_service_item_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_service_item" id="result_T_u_service_item"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_service_item" id="param_T_u_service_item"/>
+<insert id="insert_t_u_service_item" parameterMap="param_T_u_service_item" >
+
+insert into t_u_service_item   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="item_name != null and item_name != ''">
+item_name,
+ </if>
+<if test="item_price != null and item_price != ''">
+item_price,
+ </if>
+<if test="unit_id != null and unit_id != ''">
+unit_id,
+ </if>
+<if test="item_picture != null and item_picture != ''">
+item_picture,
+ </if>
+<if test="project_id != null and project_id != ''">
+project_id,
+ </if>
+<if test="item_upper_limit != null and item_upper_limit != ''">
+item_upper_limit,
+ </if>
+<if test="item_lower_limit != null and item_lower_limit != ''">
+item_lower_limit,
+ </if>
+<if test="upper_per_price != null and upper_per_price != ''">
+upper_per_price,
+ </if>
+<if test="upper_total_price != null and upper_total_price != ''">
+upper_total_price,
+ </if>
+<if test="lower_per_price != null and lower_per_price != ''">
+lower_per_price,
+ </if>
+<if test="lower_total_price != null and lower_total_price != ''">
+lower_total_price,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="item_name != null and item_name != ''">
+#{item_name},
+ </if>
+<if test="item_price != null and item_price != ''">
+#{item_price},
+ </if>
+<if test="unit_id != null and unit_id != ''">
+#{unit_id},
+ </if>
+<if test="item_picture != null and item_picture != ''">
+#{item_picture},
+ </if>
+<if test="project_id != null and project_id != ''">
+#{project_id},
+ </if>
+<if test="item_upper_limit != null and item_upper_limit != ''">
+#{item_upper_limit},
+ </if>
+<if test="item_lower_limit != null and item_lower_limit != ''">
+#{item_lower_limit},
+ </if>
+<if test="upper_per_price != null and upper_per_price != ''">
+#{upper_per_price},
+ </if>
+<if test="upper_total_price != null and upper_total_price != ''">
+#{upper_total_price},
+ </if>
+<if test="lower_per_price != null and lower_per_price != ''">
+#{lower_per_price},
+ </if>
+<if test="lower_total_price != null and lower_total_price != ''">
+#{lower_total_price},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_u_service_item" parameterMap="param_T_u_service_item" >
+update t_u_service_item set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_u_service_item" parameterMap="param_T_u_service_item" >update t_u_service_item   
+
+<set>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="item_name != null and item_name != ''">
+item_name=#{item_name},
+ </if>
+<if test="item_price != null and item_price != ''">
+item_price=#{item_price},
+ </if>
+<if test="unit_id != null and unit_id != ''">
+unit_id=#{unit_id},
+ </if>
+<if test="item_picture != null and item_picture != ''">
+item_picture=#{item_picture},
+ </if>
+<if test="project_id != null and project_id != ''">
+project_id=#{project_id},
+ </if>
+<if test="item_upper_limit != null and item_upper_limit != ''">
+item_upper_limit=#{item_upper_limit},
+ </if>
+<if test="item_lower_limit != null and item_lower_limit != ''">
+item_lower_limit=#{item_lower_limit},
+ </if>
+<if test="upper_per_price != null and upper_per_price != ''">
+upper_per_price=#{upper_per_price},
+ </if>
+<if test="upper_total_price != null and upper_total_price != ''">
+upper_total_price=#{upper_total_price},
+ </if>
+<if test="lower_per_price != null and lower_per_price != ''">
+lower_per_price=#{lower_per_price},
+ </if>
+<if test="lower_total_price != null and lower_total_price != ''">
+lower_total_price=#{lower_total_price},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_u_service_item" parameterMap="param_T_u_service_item"  resultMap="result_T_u_service_item">
+select ID,CREATOR,UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER,ITEM_NAME,ITEM_PRICE,UNIT_ID,ITEM_PICTURE,PROJECT_ID,ITEM_UPPER_LIMIT,ITEM_LOWER_LIMIT,UPPER_PER_PRICE,UPPER_TOTAL_PRICE,LOWER_PER_PRICE,LOWER_TOTAL_PRICE
+ from t_u_service_item where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="item_name != null and item_name != ''">
+ and item_name=#{item_name}
+ </if>
+<if test="item_price != null and item_price != ''">
+ and item_price=#{item_price}
+ </if>
+<if test="unit_id != null and unit_id != ''">
+ and unit_id=#{unit_id}
+ </if>
+<if test="item_picture != null and item_picture != ''">
+ and item_picture=#{item_picture}
+ </if>
+<if test="project_id != null and project_id != ''">
+ and project_id=#{project_id}
+ </if>
+<if test="item_upper_limit != null and item_upper_limit != ''">
+ and item_upper_limit=#{item_upper_limit}
+ </if>
+<if test="item_lower_limit != null and item_lower_limit != ''">
+ and item_lower_limit=#{item_lower_limit}
+ </if>
+<if test="upper_per_price != null and upper_per_price != ''">
+ and upper_per_price=#{upper_per_price}
+ </if>
+<if test="upper_total_price != null and upper_total_price != ''">
+ and upper_total_price=#{upper_total_price}
+ </if>
+<if test="lower_per_price != null and lower_per_price != ''">
+ and lower_per_price=#{lower_per_price}
+ </if>
+<if test="lower_total_price != null and lower_total_price != ''">
+ and lower_total_price=#{lower_total_price}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.acct_details.dao.ACC_Order_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.acct_details.domain.ACC_Order" id="result_ACC_Order"/>
+<parameterMap type="com.ccunix.ihousekeeping.acct_details.domain.ACC_Order" id="param_ACC_Order"/>
+<select id="queryAll_acc_order" parameterMap="param_ACC_Order"  resultMap="result_ACC_Order">
+<!--select ID,CREATOR,UPDATER,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD HH24:MI:SS') CREATETIME_str,UPDATETIME,to_char(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') UPDATETIME_str,IS_DELETE,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD HH24:MI:SS') DELETETIME_str,DELETE_USER,ORDER_NO,ORDER_TIME,to_char(ORDER_TIME,'YYYY-MM-DD HH24:MI:SS') ORDER_TIME_str,ORDE_STATE,SALER_ID,PAY_TYPE,PAY_MONEY,IS_DEV
+ from t_lz_order where is_delete != 1 -->
+select rownum rownumber,a.ID id,to_char(a.order_time,'YYYY-MM-DD HH24:MI:SS') Order_TIME_str,a.order_no,a.orde_state,a.pay_money,
+ b.saler_name,b.divide,b.is_auto,b.receive_acct,
+ c.acct_name,d.receive_type
+ from t_lz_order a left outer join t_lz_saler b
+on a.id=b.id 
+left outer join t_lz_receive_acct c on c.id = b.id
+left outer join t_lz_saler d on d.id=c.id
+where a.is_delete != 1 and b.divide is not null
+ <if test="keyword_saler_name != '' and keyword_saler_name != null">
+ and b.saler_name like concat('%',concat(#{keyword_saler_name},'%'))
+ </if>
+  <if test="keyword_acct_name != '' and keyword_acct_name != null">
+ and c.acct_name like concat('%',concat(#{keyword_acct_name},'%'))
+ </if>
+  <if test="keyword_order_time_begin != '' and keyword_order_time_begin != null">
+ and  to_char(a.order_time,'YYYY-MM-DD')>=#{keyword_order_time_begin}
+ </if>
+  <if test="keyword_order_time_end != '' and keyword_order_time_end != null">
+ and  to_char(a.order_time,'YYYY-MM-DD')&lt;=#{keyword_order_time_end}
+ </if>
+ <if test="id != null and id != ''">
+ and a.id=#{id}
+ </if>
+  <if test="order_time_str != null and order_time_str != ''">
+ and a.order_time_str=#{order_time_str}
+ </if>
+<if test="creator != null and creator != ''">
+ and a.creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and a.updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and a.createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and a.updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and a.is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and a.deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and a.delete_user=#{delete_user}
+ </if>
+<if test="order_no != null and order_no != ''">
+ and a.order_no=#{order_no}
+ </if>
+<if test="order_time != null and order_time != ''">
+ and a.order_time=#{order_time}
+ </if>
+<if test="orde_state != null and orde_state != ''">
+ and a.orde_state=#{orde_state}
+ </if>
+<if test="saler_id != null and saler_id != ''">
+ and a.saler_id=#{saler_id}
+ </if>
+<if test="pay_type != null and pay_type != ''">
+ and a.pay_type=#{pay_type}
+ </if>
+<if test="pay_money != null and pay_money != ''">
+ and a.pay_money=#{pay_money}
+ </if>
+<if test="is_dev != null and is_dev != ''">
+ and a.is_dev=#{is_dev}
+ </if>
+ <if test="saler_name != null and saler_name != ''">
+ and b.saler_name=#{saler_name}
+ </if>
+ <if test="divide != null and divide != ''">
+ and b.divide=#{divide}
+ </if>
+ <if test="acct_name != null and acct_name != ''">
+ and c.acct_name=#{acct_name}
+ </if>
+ <if test="type_name != null and type_name != ''">
+ and d.type_name=#{type_name}
+ </if>
+  <if test="is_auto != null and is_auto != ''">
+ and b.is_auto=#{is_auto}
+ </if>
+
+   <if test="receive_acct != null and receive_acct != ''">
+ and  b.receive_acct=#{receive_acct}
+ </if>
+</select>
+
+
+
+
+
+<select id="queryAll_jz_acc_order" parameterMap="param_ACC_Order"  resultMap="result_ACC_Order">
+<!--select ID,CREATOR,UPDATER,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD HH24:MI:SS') CREATETIME_str,UPDATETIME,to_char(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') UPDATETIME_str,IS_DELETE,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD HH24:MI:SS') DELETETIME_str,DELETE_USER,ORDER_NO,ORDER_TIME,to_char(ORDER_TIME,'YYYY-MM-DD HH24:MI:SS') ORDER_TIME_str,ORDE_STATE,SALER_ID,PAY_TYPE,PAY_MONEY,IS_DEV
+ from t_lz_order where is_delete != 1 -->
+select rownum rownumber,a.ID id,to_char(a.order_time,'YYYY-MM-DD HH24:MI:SS') Order_TIME_str,a.order_no,a.orde_state,a.pay_money,
+ b.saler_name,b.divide,
+ c.acct_name,d.type_name
+ from t_lz_order a left outer join t_lz_saler b
+on a.id=b.id 
+left outer join t_lz_receive_acct c on c.id = b.id
+left outer join t_lz_receive_type d on d.id=c.id
+where a.is_delete != 1
+ <if test="keyword_saler_name != '' and keyword_saler_name != null">
+ and saler_name = #{keyword_saler_name}
+ </if>
+  <if test="keyword_acct_name != '' and keyword_acct_name != null">
+ and acct_name = #{keyword_acct_name}
+ </if>
+  <if test="keyword_order_time_begin != '' and keyword_order_time_begin != null">
+ and  to_char(order_time,'YYYY-MM-DD')>=#{keyword_order_time_begin}
+ </if>
+  <if test="keyword_order_time_end != '' and keyword_order_time_end != null">
+ and  to_char(order_time,'YYYY-MM-DD')&lt;=#{keyword_order_time_end}
+ </if>
+ <if test="id != null and id != ''">
+ and a.id=#{id}
+ </if>
+  <if test="order_time_str != null and order_time_str != ''">
+ and a.order_time_str=#{order_time_str}
+ </if>
+<if test="creator != null and creator != ''">
+ and a.creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and a.updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and a.createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and a.updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and a.is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and a.deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and a.delete_user=#{delete_user}
+ </if>
+<if test="order_no != null and order_no != ''">
+ and a.order_no=#{order_no}
+ </if>
+<if test="order_time != null and order_time != ''">
+ and a.order_time=#{order_time}
+ </if>
+<if test="orde_state != null and orde_state != ''">
+ and a.orde_state=#{orde_state}
+ </if>
+<if test="saler_id != null and saler_id != ''">
+ and a.saler_id=#{saler_id}
+ </if>
+<if test="pay_type != null and pay_type != ''">
+ and a.pay_type=#{pay_type}
+ </if>
+<if test="pay_money != null and pay_money != ''">
+ and a.pay_money=#{pay_money}
+ </if>
+<if test="is_dev != null and is_dev != ''">
+ and a.is_dev=#{is_dev}
+ </if>
+ <if test="saler_name != null and saler_name != ''">
+ and b.saler_name=#{saler_name}
+ </if>
+ <if test="divide != null and divide != ''">
+ and b.divide=#{divide}
+ </if>
+ <if test="acct_name != null and acct_name != ''">
+ and c.acct_name=#{acct_name}
+ </if>
+ <if test="type_name != null and type_name != ''">
+ and d.type_name=#{type_name}
+ </if>
+</select>
+
+<select id="queryAll_alipay" parameterMap="param_ACC_Order"  resultMap="result_ACC_Order">
+
+select rownum rownumber,a.ID id,a.order_no,substr(a.order_no,-11) order_no_str,a.pay_money,a.orde_state,
+b.receive_acct,b.divide ,b.is_auto
+ from t_lz_order a left outer join t_lz_saler b
+ on substr(a.order_no,-11)=b.receive_acct
+ where b.receive_acct is not null and b.divide is not null
+ <if test="id != null and id != ''">
+ and a.id=#{id}
+ </if>
+  <if test="order_time_str != null and order_time_str != ''">
+ and a.order_time_str=#{order_time_str}
+ </if>
+<if test="creator != null and creator != ''">
+ and a.creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and a.updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and a.createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and a.updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and a.is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and a.deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and a.delete_user=#{delete_user}
+ </if>
+<if test="order_no != null and order_no != ''">
+ and a.order_no=#{order_no}
+ </if>
+<if test="order_time != null and order_time != ''">
+ and a.order_time=#{order_time}
+ </if>
+<if test="orde_state != null and orde_state != ''">
+ and a.orde_state=#{orde_state}
+ </if>
+<if test="saler_id != null and saler_id != ''">
+ and a.saler_id=#{saler_id}
+ </if>
+<if test="pay_type != null and pay_type != ''">
+ and a.pay_type=#{pay_type}
+ </if>
+<if test="pay_money != null and pay_money != ''">
+ and a.pay_money=#{pay_money}
+ </if>
+<if test="is_dev != null and is_dev != ''">
+ and a.is_dev=#{is_dev}
+ </if>
+ 
+ <if test="order_no_str != null and order_no_str != ''">
+ and order_no_str=#{order_no_str}
+ </if>
+ <if test="receive_acct != null and receive_acct != ''">
+ and b.receive_acct=#{receive_acct}
+ </if>
+ <if test="divide != null and divide != ''">
+ and b.divide=#{divide}
+ </if>
+   <if test="is_auto != null and is_auto != ''">
+ and b.is_auto=#{is_auto}
+ </if>
+</select>
+
+<select id="getOrderNo_seq" resultType="int">
+select ORDERNO_SEQ.nextval from dual
+</select>
+
+
+</mapper>

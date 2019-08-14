@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_s_advertisement_manager_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_advertisement_manager" id="result_T_s_advertisement_manager"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_advertisement_manager" id="param_T_s_advertisement_manager"/>
+<insert id="insert_t_s_advertisement_manager" parameterMap="param_T_s_advertisement_manager" >
+
+insert into t_s_advertisement_manager   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="advertisment_name != null and advertisment_name != ''">
+advertisment_name,
+ </if>
+<if test="position != null and position != ''">
+position,
+ </if>
+<if test="is_wheel != null and is_wheel != ''">
+is_wheel,
+ </if>
+<if test="wheel_time != null and wheel_time != ''">
+wheel_time,
+ </if>
+<if test="type_id != null and type_id != ''">
+type_id,
+ </if>
+<if test="is_enable != null and is_enable != ''">
+is_enable,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="advertisment_name != null and advertisment_name != ''">
+#{advertisment_name},
+ </if>
+<if test="position != null and position != ''">
+#{position},
+ </if>
+<if test="is_wheel != null and is_wheel != ''">
+#{is_wheel},
+ </if>
+<if test="wheel_time != null and wheel_time != ''">
+#{wheel_time},
+ </if>
+<if test="type_id != null and type_id != ''">
+#{type_id},
+ </if>
+<if test="is_enable != null and is_enable != ''">
+#{is_enable},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_s_advertisement_manager" parameterMap="param_T_s_advertisement_manager" >
+update t_s_advertisement_manager set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_s_advertisement_manager" parameterMap="param_T_s_advertisement_manager" >update t_s_advertisement_manager   
+
+<set>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="advertisment_name != null and advertisment_name != ''">
+advertisment_name=#{advertisment_name},
+ </if>
+<if test="position != null and position != ''">
+position=#{position},
+ </if>
+<if test="is_wheel != null and is_wheel != ''">
+is_wheel=#{is_wheel},
+ </if>
+<if test="wheel_time != null and wheel_time != ''">
+wheel_time=#{wheel_time},
+ </if>
+<if test="type_id != null and type_id != ''">
+type_id=#{type_id},
+ </if>
+<if test="is_enable != null and is_enable != ''">
+is_enable=#{is_enable},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_s_advertisement_manager" parameterMap="param_T_s_advertisement_manager"  resultMap="result_T_s_advertisement_manager">
+select ID,CREATOR,UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER,ADVERTISMENT_NAME,POSITION,IS_WHEEL,WHEEL_TIME,TYPE_ID,IS_ENABLE
+ from t_s_advertisement_manager where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="advertisment_name != null and advertisment_name != ''">
+ and advertisment_name=#{advertisment_name}
+ </if>
+<if test="position != null and position != ''">
+ and position=#{position}
+ </if>
+<if test="is_wheel != null and is_wheel != ''">
+ and is_wheel=#{is_wheel}
+ </if>
+<if test="wheel_time != null and wheel_time != ''">
+ and wheel_time=#{wheel_time}
+ </if>
+<if test="type_id != null and type_id != ''">
+ and type_id=#{type_id}
+ </if>
+<if test="is_enable != null and is_enable != ''">
+ and is_enable=#{is_enable}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

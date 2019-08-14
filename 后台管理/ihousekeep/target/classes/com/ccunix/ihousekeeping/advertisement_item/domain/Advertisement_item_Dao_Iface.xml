@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.advertisement_item.dao.Advertisement_item_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.advertisement_item.domain.Advertisement_item" id="result_Advertisement_item"/>
+<parameterMap type="com.ccunix.ihousekeeping.advertisement_item.domain.Advertisement_item" id="param_Advertisement_item"/>
+<select id="queryAll_advertisement_item" parameterMap="param_Advertisement_item"  resultMap="result_Advertisement_item">
+select rownum rownumber,UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER,ITEM_URL,TITLE,IS_SEC_LINK,LINK_TITLE,SEC_URL,MANGER_ID,BOARD_ORDER,ID,CREATOR
+ from t_s_advertisement_item where is_delete != 1
+ <if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+ <if test="keyword != '' and keyword != null">
+ and TITLE like concat('%',concat(#{keyword},'%'))
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="item_url != null and item_url != ''">
+ and item_url=#{item_url}
+ </if>
+<if test="title != null and title != ''">
+ and title=#{title}
+ </if>
+<if test="is_sec_link != null and is_sec_link != ''">
+ and is_sec_link=#{is_sec_link}
+ </if>
+<if test="link_title != null and link_title != ''">
+ and link_title=#{link_title}
+ </if>
+<if test="sec_url != null and sec_url != ''">
+ and sec_url=#{sec_url}
+ </if>
+<if test="manger_id != null and manger_id != ''">
+ and manger_id=#{manger_id}
+ </if>
+<if test="board_order != null and board_order != ''">
+ and board_order=#{board_order}
+ </if>
+<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

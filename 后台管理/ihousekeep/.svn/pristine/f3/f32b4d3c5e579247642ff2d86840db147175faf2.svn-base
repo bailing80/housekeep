@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+#empManBtn{
+	height:50px;
+	border:1px solid rgb(51,122,183);
+
+}
+.empbtn{
+	width: 100px;
+	height:40px;
+	background-color:rgb(61,186,92);
+	margin-right: 130px;
+	margin-left:80px;
+}
+#addemp{
+	border:1px solid rgb(51,122,183);
+	
+}
+#addemp font{
+	color:green;
+	font-size: 40px;
+}
+#addemp form{
+	
+	font-size: 20px;
+}
+#submit{
+	width:100px;
+
+}
+#employeeTable{
+	margin: 0 auto;
+	border: 1px solid rgb(51,122,183);
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/test.js"></script>
+</head>
+<body>
+测试idus<br>
+
+<div style="width: 300px;height: 300px;background: #999999">
+姓名:<input type="text" id="name"><br>
+密码:<input type="text" id="pass"><br>
+年龄:<input type="text" id="age"><br>
+<button id="addbutton">添加</button>
+</div>
+
+
+<table id="usertable">
+
+</table>
+
+
+
+
+
+</body>
+</html>

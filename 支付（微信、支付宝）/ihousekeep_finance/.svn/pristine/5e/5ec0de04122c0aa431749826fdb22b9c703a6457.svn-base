@@ -1,0 +1,68 @@
+package com.ccunix.ihousekeeping.wechatpay.domain;
+
+import java.io.Serializable;
+
+public class WxPayOa implements Serializable {
+
+	// 应用ID
+	private String appid;
+	// 随机字符串
+	private String noncestr;
+	// 扩展字段
+	private String packageace;
+	// 商户号
+	private String partnerid;
+	// 预支付交易会话ID
+	private String prepayid;
+	// 时间戳
+	private String timestamp;
+
+	public String getAppid() {
+		return appid;
+	}
+
+	public void setAppid(String appid) {
+		this.appid = appid;
+	}
+
+	public String getNoncestr() {
+		return noncestr;
+	}
+
+	public void setNoncestr(String noncestr) {
+		this.noncestr = noncestr;
+	}
+
+	public String getPackageace() {
+		return packageace;
+	}
+
+	public void setPackageace(String packageace) {
+		this.packageace = packageace;
+	}
+
+	public String getPartnerid() {
+		return partnerid;
+	}
+
+	public void setPartnerid(String partnerid) {
+		this.partnerid = partnerid;
+	}
+
+	public String getPrepayid() {
+		return prepayid;
+	}
+
+	public void setPrepayid(String prepayid) {
+		this.prepayid = prepayid;
+	}
+
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+
+}

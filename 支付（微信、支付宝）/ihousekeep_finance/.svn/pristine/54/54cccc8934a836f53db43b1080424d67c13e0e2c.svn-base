@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_lz_zfb_info_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_lz_zfb_info" id="result_T_lz_zfb_info"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_lz_zfb_info" id="param_T_lz_zfb_info"/>
+<insert id="insert_t_lz_zfb_info" parameterMap="param_T_lz_zfb_info" >
+
+insert into t_lz_zfb_info   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="mapping_id != null and mapping_id != ''">
+mapping_id,
+ </if>
+<if test="acct != null and acct != ''">
+acct,
+ </if>
+<if test="key != null and key != ''">
+key,
+ </if>
+<if test="app_id != null and app_id != ''">
+app_id,
+ </if>
+<if test="merchant_private_key != null and merchant_private_key != ''">
+merchant_private_key,
+ </if>
+<if test="alipay_public_key != null and alipay_public_key != ''">
+alipay_public_key,
+ </if>
+<if test="notify_url != null and notify_url != ''">
+notify_url,
+ </if>
+<if test="return_url != null and return_url != ''">
+return_url,
+ </if>
+<if test="sign_type != null and sign_type != ''">
+sign_type,
+ </if>
+<if test="charset != null and charset != ''">
+charset,
+ </if>
+<if test="gatewayurl != null and gatewayurl != ''">
+gatewayurl,
+ </if>
+<if test="zfbchar != null and zfbchar != ''">
+zfbchar,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="mapping_id != null and mapping_id != ''">
+#{mapping_id},
+ </if>
+<if test="acct != null and acct != ''">
+#{acct},
+ </if>
+<if test="key != null and key != ''">
+#{key},
+ </if>
+<if test="app_id != null and app_id != ''">
+#{app_id},
+ </if>
+<if test="merchant_private_key != null and merchant_private_key != ''">
+#{merchant_private_key},
+ </if>
+<if test="alipay_public_key != null and alipay_public_key != ''">
+#{alipay_public_key},
+ </if>
+<if test="notify_url != null and notify_url != ''">
+#{notify_url},
+ </if>
+<if test="return_url != null and return_url != ''">
+#{return_url},
+ </if>
+<if test="sign_type != null and sign_type != ''">
+#{sign_type},
+ </if>
+<if test="charset != null and charset != ''">
+#{charset},
+ </if>
+<if test="gatewayurl != null and gatewayurl != ''">
+#{gatewayurl},
+ </if>
+<if test="zfbchar != null and zfbchar != ''">
+#{zfbchar},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_lz_zfb_info" parameterMap="param_T_lz_zfb_info" >
+update t_lz_zfb_info set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_lz_zfb_info" parameterMap="param_T_lz_zfb_info" >update t_lz_zfb_info   
+
+<set>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="mapping_id != null and mapping_id != ''">
+mapping_id=#{mapping_id},
+ </if>
+<if test="acct != null and acct != ''">
+acct=#{acct},
+ </if>
+<if test="key != null and key != ''">
+key=#{key},
+ </if>
+<if test="app_id != null and app_id != ''">
+app_id=#{app_id},
+ </if>
+<if test="merchant_private_key != null and merchant_private_key != ''">
+merchant_private_key=#{merchant_private_key},
+ </if>
+<if test="alipay_public_key != null and alipay_public_key != ''">
+alipay_public_key=#{alipay_public_key},
+ </if>
+<if test="notify_url != null and notify_url != ''">
+notify_url=#{notify_url},
+ </if>
+<if test="return_url != null and return_url != ''">
+return_url=#{return_url},
+ </if>
+<if test="sign_type != null and sign_type != ''">
+sign_type=#{sign_type},
+ </if>
+<if test="charset != null and charset != ''">
+charset=#{charset},
+ </if>
+<if test="gatewayurl != null and gatewayurl != ''">
+gatewayurl=#{gatewayurl},
+ </if>
+<if test="zfbchar != null and zfbchar != ''">
+zfbchar=#{zfbchar},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_lz_zfb_info" parameterMap="param_T_lz_zfb_info"  resultMap="result_T_lz_zfb_info">
+select ID,CREATOR,UPDATER,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD HH24:MI:SS') CREATETIME_str,UPDATETIME,to_char(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') UPDATETIME_str,IS_DELETE,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD HH24:MI:SS') DELETETIME_str,DELETE_USER,MAPPING_ID,ACCT,KEY,APP_ID,MERCHANT_PRIVATE_KEY,ALIPAY_PUBLIC_KEY,NOTIFY_URL,RETURN_URL,SIGN_TYPE,CHARSET,GATEWAYURL,ZFBCHAR
+ from t_lz_zfb_info where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="mapping_id != null and mapping_id != ''">
+ and mapping_id=#{mapping_id}
+ </if>
+<if test="acct != null and acct != ''">
+ and acct=#{acct}
+ </if>
+<if test="key != null and key != ''">
+ and key=#{key}
+ </if>
+<if test="app_id != null and app_id != ''">
+ and app_id=#{app_id}
+ </if>
+<if test="merchant_private_key != null and merchant_private_key != ''">
+ and merchant_private_key=#{merchant_private_key}
+ </if>
+<if test="alipay_public_key != null and alipay_public_key != ''">
+ and alipay_public_key=#{alipay_public_key}
+ </if>
+<if test="notify_url != null and notify_url != ''">
+ and notify_url=#{notify_url}
+ </if>
+<if test="return_url != null and return_url != ''">
+ and return_url=#{return_url}
+ </if>
+<if test="sign_type != null and sign_type != ''">
+ and sign_type=#{sign_type}
+ </if>
+<if test="charset != null and charset != ''">
+ and charset=#{charset}
+ </if>
+<if test="gatewayurl != null and gatewayurl != ''">
+ and gatewayurl=#{gatewayurl}
+ </if>
+<if test="zfbchar != null and zfbchar != ''">
+ and zfbchar=#{zfbchar}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

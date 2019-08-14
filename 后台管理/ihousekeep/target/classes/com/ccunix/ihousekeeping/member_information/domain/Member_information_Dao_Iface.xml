@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ccunix.ihousekeeping.member_information.dao.Member_information_Dao_Iface">
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.member_information.domain.Member_information"
+		id="result_Member_information" />
+	<parameterMap
+		type="com.ccunix.ihousekeeping.member_information.domain.Member_information"
+		id="param_Member_information" />
+	<select id="query_all_member_information"
+		parameterMap="param_Member_information"
+		resultMap="result_Member_information">
+		select rownum num ,a.id, a.nick_name , a.user_phone , b.door_number ,
+		b.address , ( c.APARTMENT_NAME_T||'室'|| c.APARTMENT_NAME_C||'厅'||
+		c.APARTMENT_NAME_W ||'卫'|| c.APARTMENT_NAME_S||'厨') as apartment_name
+		,
+		(d.area_name_list||'-'|| d.area_name_most) as area_name,b.true_area
+		,a.member_state
+		from t_u_member a left outer join T_U_MEMBER_ADDRESS b
+		on a.id=b.member_id
+		left outer join t_u_apartment_type c on
+		b.apartment_id=c.id
+		left outer join T_U_AREA_TYPE d on b.t_u_id= d.id
+
+		<where>
+			<if test="keyword != '' and keyword != null">
+				a.is_delete!=1 and a.user_phone like
+				concat('%',concat(#{keyword},'%'))
+			</if>
+
+			<if test="id != null and id != ''">
+				and a.id=#{id}
+			</if>
+			<if test="createtime != null and createtime != ''">
+				and createtime=#{createtime}
+			</if>
+			<if test="delete_user != null and delete_user != ''">
+				and delete_user=#{delete_user}
+			</if>
+			<if test="updater != null and updater != ''">
+				and updater=#{updater}
+			</if>
+			<if test="creator != null and creator != ''">
+				and creator=#{creator}
+			</if>
+			<if test="deletetime != null and deletetime != ''">
+				and deletetime=#{deletetime}
+			</if>
+			<if test="is_delete != null and is_delete != ''">
+				and is_delete=#{is_delete}
+			</if>
+			<if test="updatetime != null and updatetime != ''">
+				and updatetime=#{updatetime}
+			</if>
+			<if test="user_phone != null and user_phone != ''">
+				and user_phone=#{user_phone}
+			</if>
+			<if test="nick_name != null and nick_name != ''">
+				and nick_name=#{nick_name}
+			</if>
+			<if test="user_pass != null and user_pass != ''">
+				and user_pass=#{user_pass}
+			</if>
+			<if test="member_state != null and member_state != ''">
+				and member_state=#{member_state}
+			</if>
+		</where>
+
+	</select>
+
+
+
+</mapper>

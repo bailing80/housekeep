@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop
+	 classpath:/org/springframework/aop/config/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/beans 
+        classpath:/org/springframework/beans/factory/xml/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context 
+        classpath:/org/springframework/context/config/spring-context-4.0.xsd">
+
+	<!-- 配置redis部分 start -->
+
+	<!-- 配置redis连接池 JedisPoolConfig -->
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="300" />
+		<property name="maxActive" value="600" />
+	</bean>
+
+	<!-- 配置CoonnectionFactory JedisConnectionFactory -->
+	<bean id="connFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<property name="hostName" value="127.0.0.1"></property>
+		<property name="port" value="6379"></property>
+		<property name="poolConfig" ref="poolConfig"></property>
+	</bean>
+
+	<!-- 配置redisTemplate StringRedisTemplate -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+		<property name="connectionFactory" ref="connFactory" />
+	</bean>
+
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<property name="caches">
+			<set>
+				<bean class="com.ccunix.ihousekeeping.base.util.RedisUtil">
+					<property name="redisTemplate" ref="redisTemplate" />
+					<property name="name" value="User" />
+					<!-- User名称要在类或方法的注解中使用 -->
+				</bean>
+				<bean class="com.ccunix.ihousekeeping.base.util.RedisUtil">
+					<property name="redisTemplate" ref="redisTemplate" />
+					<property name="name" value="System_User" />
+				</bean>
+			</set>
+		</property>
+	</bean>
+	
+	 <bean id="redisCacheTransfer" class="com.ccunix.ihousekeeping.base.util.RedisCacheTransfer">
+        <property name="jedisConnectionFactory" ref="connFactory"/>
+    </bean>    
+
+</beans>

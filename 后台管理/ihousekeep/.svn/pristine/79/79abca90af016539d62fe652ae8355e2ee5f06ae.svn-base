@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ccunix.ihousekeeping.coupon.dao.Coupon_H_Dao_Iface">
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.coupon.domain.Coupon_H"
+		id="result_coupon_h" />
+	<parameterMap
+		type="com.ccunix.ihousekeeping.coupon.domain.Coupon_H"
+		id="param_coupon_h" />
+
+	<parameterMap
+		type="com.ccunix.ihousekeeping.base.domain.Base_Model_Business"
+		id="Base_Model_Business" />
+
+
+	<select id="queryAll_H_coupon" parameterMap="param_coupon_h"
+		resultMap="result_coupon_h">
+
+
+		select rownum rownumber,ID,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD
+		HH24:MI:SS')
+		CREATETIME_str,DELETE_USER,UPDATER,CREATOR,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD
+		HH24:MI:SS')
+		DELETETIME_str,IS_DELETE,UPDATETIME,to_char(UPDATETIME,'YYYY-MM-DD
+		HH24:MI:SS')
+		UPDATETIME_str,COUPON_TYPE_ID,EXCHANGE_CODE,EXCHANGE_TIME,to_char(EXCHANGE_TIME,'YYYY-MM-DD
+		HH24:MI:SS')
+		EXCHANGE_TIME_str,STATE,USED_MEMBER,GET_MEMBER,GET_TIME,to_char(GET_TIME,'YYYY-MM-DD
+		HH24:MI:SS')
+		GET_TIME_str,TO_VOIDER,TO_VOID_TIME,to_char(TO_VOID_TIME,'YYYY-MM-DD
+		HH24:MI:SS') TO_VOID_TIME_str,COUPON_MANAGER_ID,MONEY,COLUMN5
+		from
+		t_u_coupon where is_delete != 1
+		<if test="id != null and id != ''">
+			and id=#{id}
+
+		</if>
+		<if test="createtime != null and createtime != ''">
+			and createtime=#{createtime}
+		</if>
+		<if test="delete_user != null and delete_user != ''">
+			and delete_user=#{delete_user}
+		</if>
+		<if test="updater != null and updater != ''">
+			and updater=#{updater}
+		</if>
+		<if test="creator != null and creator != ''">
+			and creator=#{creator}
+		</if>
+		<if test="deletetime != null and deletetime != ''">
+			and deletetime=#{deletetime}
+		</if>
+		<if test="is_delete != null and is_delete != ''">
+			and is_delete=#{is_delete}
+		</if>
+		<if test="updatetime != null and updatetime != ''">
+			and updatetime=#{updatetime}
+		</if>
+		<if test="coupon_type_id != null and coupon_type_id != ''">
+			and coupon_type_id=#{coupon_type_id}
+		</if>
+		<if test="exchange_code != null and exchange_code != ''">
+			and exchange_code=#{exchange_code}
+		</if>
+		<if test="exchange_time != null and exchange_time != ''">
+			and exchange_time=#{exchange_time}
+		</if>
+		<if test="state != null and state != ''">
+			and state=#{state}
+		</if>
+		<if test="used_member != null and used_member != ''">
+			and used_member=#{used_member}
+		</if>
+		<if test="get_member != null and get_member != ''">
+			and get_member=#{get_member}
+		</if>
+		<if test="get_time != null and get_time != ''">
+			and get_time=#{get_time}
+		</if>
+		<if test="to_voider != null and to_voider != ''">
+			and to_voider=#{to_voider}
+		</if>
+		<if test="to_void_time != null and to_void_time != ''">
+			and to_void_time=#{to_void_time}
+		</if>
+		<if test="coupon_manager_id != null and coupon_manager_id != ''">
+			and coupon_manager_id=#{coupon_manager_id}
+		</if>
+		<if test="money != null and money != ''">
+			and money=#{money}
+		</if>
+		<if test="column5 != null and column5 != ''">
+			and column5=#{column5}
+		</if>
+	</select>
+
+
+
+	<select id="getCouponInfo" parameterMap="Base_Model_Business"
+		resultMap="result_coupon_h">
+		select c.id,
+		t.type_name,t.back_pic,c.money ,c.to_void_time from
+		t_u_coupon_type t
+		,t_u_coupon c where
+		c.coupon_type_id=t.id and
+		c.is_delete !=1 and
+		c.state='02'
+		<if test="used_member != null and used_member != ''">
+			and used_member=#{id}
+		</if>
+
+
+	</select>
+
+
+</mapper>

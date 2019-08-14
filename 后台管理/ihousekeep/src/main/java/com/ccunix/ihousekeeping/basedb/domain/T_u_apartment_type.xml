@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_u_apartment_type_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_apartment_type" id="result_T_u_apartment_type"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_apartment_type" id="param_T_u_apartment_type"/>
+<insert id="insert_t_u_apartment_type" parameterMap="param_T_u_apartment_type" >
+
+insert into t_u_apartment_type   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="apartment_name_t != null and apartment_name_t != ''">
+apartment_name_t,
+ </if>
+<if test="apartment_name_c != null and apartment_name_c != ''">
+apartment_name_c,
+ </if>
+<if test="apartment_name_w != null and apartment_name_w != ''">
+apartment_name_w,
+ </if>
+<if test="apartment_name_s != null and apartment_name_s != ''">
+apartment_name_s,
+ </if>
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="apartment_name_t != null and apartment_name_t != ''">
+#{apartment_name_t},
+ </if>
+<if test="apartment_name_c != null and apartment_name_c != ''">
+#{apartment_name_c},
+ </if>
+<if test="apartment_name_w != null and apartment_name_w != ''">
+#{apartment_name_w},
+ </if>
+<if test="apartment_name_s != null and apartment_name_s != ''">
+#{apartment_name_s},
+ </if>
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_u_apartment_type" parameterMap="param_T_u_apartment_type" >
+update t_u_apartment_type set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_u_apartment_type" parameterMap="param_T_u_apartment_type" >update t_u_apartment_type   
+
+<set>
+<if test="apartment_name_t != null and apartment_name_t != ''">
+apartment_name_t=#{apartment_name_t},
+ </if>
+<if test="apartment_name_c != null and apartment_name_c != ''">
+apartment_name_c=#{apartment_name_c},
+ </if>
+<if test="apartment_name_w != null and apartment_name_w != ''">
+apartment_name_w=#{apartment_name_w},
+ </if>
+<if test="apartment_name_s != null and apartment_name_s != ''">
+apartment_name_s=#{apartment_name_s},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_u_apartment_type" parameterMap="param_T_u_apartment_type"  resultMap="result_T_u_apartment_type">
+select APARTMENT_NAME_T,APARTMENT_NAME_C,APARTMENT_NAME_W,APARTMENT_NAME_S,ID,DELETETIME,IS_DELETE,UPDATETIME,CREATETIME,UPDATER,CREATOR,DELETE_USER
+ from t_u_apartment_type where is_delete != 1<if test="apartment_name_t != null and apartment_name_t != ''">
+ and apartment_name_t=#{apartment_name_t}
+ </if>
+<if test="apartment_name_c != null and apartment_name_c != ''">
+ and apartment_name_c=#{apartment_name_c}
+ </if>
+<if test="apartment_name_w != null and apartment_name_w != ''">
+ and apartment_name_w=#{apartment_name_w}
+ </if>
+<if test="apartment_name_s != null and apartment_name_s != ''">
+ and apartment_name_s=#{apartment_name_s}
+ </if>
+<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link href="<%=baseurl %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=baseurl %>/css/base.css" rel="stylesheet">
+<script src="<%=baseurl %>/js/jquery.js"></script>
+<script src="<%=baseurl %>/bootstrap/js/bootstrap.min.js"></script> -->
+</head>
+
+<body>
+	<table border="1" class="table table-striped" style="width: 100%">
+		<tr>
+			<td>名称</td>
+			<td><input id="s_key" type="text" size="4" class="form-control"
+				readonly unselected="on" style="width: 100%"></td>
+		</tr>
+		<tr>
+			<td>内容</td>
+			<td><input id="s_value" type="text" size="4"
+				class="form-control" style="width: 100%"></td>
+		</tr>
+		<tr>
+			<td>描述</td>
+			<td><input id="s_discription" type="text" size="4"
+				class="form-control" style="width: 100%"></td>
+		</tr>
+	</table>
+
+
+</body>
+</html>

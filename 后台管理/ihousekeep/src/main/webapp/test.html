@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap -->
+<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="./js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript" src="./js/tests.js"></script>
+<script type="text/javascript" src="./js/model.js"></script>
+<style type="text/css">
+#alltable {
+	width: 100%;
+	height: 100%;
+	border-width: 1px;
+}
+</style>
+</head>
+<body>
+
+	<table id="alltable" border="1" class="table table-striped">
+		<tr>
+			<td width="15%">token</td>
+			<td width="35%"><input type="text" size="50"
+				class="form-control" readonly="readonly" id="token_str"></td>
+			<td width="15%">session</td>
+			<td width="35%"><input type="text" size="50"
+				class="form-control" readonly="readonly" id="session_str"></td>
+		</tr>
+		<tr>
+			<td><select id="model" class="selectpicker">
+					<!-- exam相关接口 -->
+					<option value="0">测试相关接口M0</option>
+					<!-- 1组用测试 -->
+					<option value="1">其他接口M1</option>
+					
+			</select></td>
+			<td colspan="2"><input type="text" size="150"
+				class="form-control" id="send_url"></td>
+			<td><button id="send">发送</button></td>
+
+		</tr>
+		<tr>
+			<td><select multiple="multiple" id="modelfunc"
+				class="selectpicker">
+
+			</select></td>
+
+			<td width="15%"><iframe id="htmlframe" name="htmlframe"
+					frameborder=0 border=0 width=450 height=300></iframe></td>
+
+			<td width="70%" colspan="2"><textarea id="result_data"
+					readonly="readonly" rows="30" cols="100" class="form-control"></textarea></td>
+
+		</tr>
+	</table>
+
+</body>
+</html>

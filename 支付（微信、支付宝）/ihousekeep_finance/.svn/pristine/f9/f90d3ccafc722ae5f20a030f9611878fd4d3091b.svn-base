@@ -1,0 +1,66 @@
+package com.ccunix.ihousekeeping.wechatpay.controller;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ccunix.ihousekeeping.base.controller.BaseMultiController;
+import com.ccunix.ihousekeeping.wechatpay.domain.WxOa;
+import com.ccunix.ihousekeeping.wechatpay.service.UUID_Tools;
+import com.ccunix.ihousekeeping.wechatpay.service.WxSignUtil;
+
+/**
+ * 
+ * @ClassName: Pay_Controller
+ * @author 肖云鹏
+ * @date 2019年8月12日 上午9:57:46
+ *
+ */
+
+@Controller
+@RequestMapping("Pay_Controller")
+public class Pay_Controller extends BaseMultiController {
+
+	WxSignUtil wxSignUtil = new WxSignUtil();
+
+	// 微信预下单交易
+	@ResponseBody
+	@RequestMapping("/yuxiadan")
+	public Map yuxiadan() throws Exception {
+		WxOa wxOa = new WxOa();
+		// 应用ID
+		wxOa.setAppid("wx79be80c19b14c37e");
+		// 商户号
+		wxOa.setMch_id("1512285851");
+		// 随机字符串 不长于32位
+		wxOa.setNonce_str(UUID_Tools.getUUID());
+		// 商品描述
+		wxOa.setBody("phone");
+		// 商户订单号
+		wxOa.setOut_trade_no("12345678");
+		// 订单总金额，单位为分
+		wxOa.setTotal_fee(1);
+		// 终端IP
+		wxOa.setSpbill_create_ip("127.0.0.1");
+		// 通知地址
+		wxOa.setNotify_url(wxSignUtil.unifiedorderUrl);
+		// 交易类型 APP
+		wxOa.setTrade_type("NATIVE");
+		// 将数据放入map中
+		Map map = wxSignUtil.WxMd5Sign(wxOa, "9dffe0f7a65bb1976d4b33d7a8b1f7ac");
+		//转换为set集合
+		Set<Map.Entry<Integer, String>> entries = map.entrySet();
+		//迭代器进行遍历
+		Iterator<Map.Entry<Integer, String>> iteratorMap = entries.iterator();
+		while (iteratorMap.hasNext()) {
+			Map.Entry<Integer, String> next = iteratorMap.next();
+			System.err.println(next);
+		}
+		return map;
+	}
+
+}

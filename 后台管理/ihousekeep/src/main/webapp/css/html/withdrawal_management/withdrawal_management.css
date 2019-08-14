@@ -1,0 +1,156 @@
+#agentmanager{
+float: left;
+font-size: 25px;
+color: rgb(98,171,210);
+margin-right:10px;
+margin-left: 20px;
+margin-top: 5px;
+ }
+ #symbol{
+ margin-top:10px;
+ float: left;
+ font-size: 20px;
+ margin-right:10px;
+ }
+ #citymanager{
+ float: left;
+ margin-right: 10px;
+ font-size: 20px;
+ margin-top: 10px;
+ }
+ 
+ #time{
+ color: rgb(103,103,103);
+ font-size: 20px;
+ margin-right: 20px;
+ }
+ #check{
+ background-color: rgb(255,153,51);
+ color: rgb(255,205,157);
+ width: 80px;
+ height: 30px;
+ border-radius:20px;
+ margin-left: 20px;
+ 
+ }
+ #send{
+ background-color: rgb(255,153,51);
+ color: rgb(255,205,157);
+ width: 80px;
+ height: 30px;
+ border-radius:20px;
+ margin-left: 20px;
+ }
+
+ #Usersaccount{
+ color: rgb(103,103,103);
+ font-size: 20px;
+ margin-right: 20px;
+ }
+ 
+ #top_1{
+ height: 60px;
+ width: 730px;
+ position:relative;
+ left: -160px;
+ top:10px;
+ }
+ #font_1{
+ font-size: 25px;
+
+ }
+ #font_a2{
+  font-size: 25px;
+  color: red;
+ }
+ #font_3{
+ font-size: 20px;
+ }
+ #font_4{
+ font-size: 20px;
+ color: red;
+ }
+ #font_5{
+ font-size: 20px;
+position:relative;
+ left: -130px;
+ top:10px;
+ }
+ #font_6{
+  font-size: 20px;
+  position:relative;
+ left: -135px;
+ top:10px;
+ }
+ #font_7{
+  font-size: 25px;
+  color: red;
+ }
+ #font_8{
+ font-size: 20px;
+ color: red;
+ }
+ #font_a9{
+ font-size: 20px;
+ color: red;
+ }
+ #font_b9{
+ font-size: 20px;
+ color: red;
+ }
+ #font_c9{
+ font-size: 20px;
+ color: red;
+ }
+ #font_10{
+ font-size: 25px;
+  color: red;
+ }
+ #font_11{
+ font-size: 25px;
+  color: red;
+ }
+ .l{
+ float:left;
+  width: 1px;
+   height: 70px;
+   background: black;
+   margin-left: 450px;
+   margin-top: -70px;
+ }
+ #font_fenrun{
+ font-size: 30px;
+ color: red;
+ }
+ #top_2{
+ width: 680px;
+ height: 60px;
+ float: left;
+ margin-left: 600px;
+ margin-top: -80px;
+ }
+ #s{
+ width: 180px;
+ height: 30px;
+ position:relative;
+ left: -70px;
+ top:-20px;
+ }
+ #i{
+ width: 180px;
+ height: 30px;
+ position:relative;
+ left: 10px;
+ top:-20px;
+ }
+ #img{
+ width: 30px;
+ height: 30px;
+ position:relative;
+ left: 10px;
+ top:-20px;
+ }
+ #take{
+ margin-left:700px;
+ margin-top:10px;
+ }

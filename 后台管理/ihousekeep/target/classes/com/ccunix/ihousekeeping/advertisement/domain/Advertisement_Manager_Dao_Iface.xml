@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.advertisement.dao.Advertisement_Manager_Dao_Iface">
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.advertisement.domain.Advertisement_Manager" id="result_Advertisement_Manager"/>
+<parameterMap type="com.ccunix.ihousekeeping.advertisement.domain.Advertisement_Manager" id="param_Advertisement_Manager"/>
+<select id="queryAll_advertisement_manager" parameterMap="param_Advertisement_Manager"  resultMap="result_Advertisement_Manager">
+select rownum rownumber,m.ID ID,m.CREATOR CREATOR,m.UPDATER UPDATER,m.CREATETIME CREATETIME,m.UPDATETIME UPDATETIME,m.IS_DELETE IS_DELETE,m.DELETETIME DELETETIME,m.DELETE_USER DELETE_USER,m.ADVERTISMENT_NAME ADVERTISMENT_NAME,m.POSITION POSITION,m.IS_WHEEL IS_WHEEL,m.WHEEL_TIME WHEEL_TIME,t.TYPE_NAME TYPE_NAME,m.IS_ENABLE IS_ENABLE
+ from t_s_advertisement_manager m inner join  t_s_advertisement_type t on m.type_id = t.id where m.is_delete != 1 
+ 
+<if test="keyword != '' and keyword != null">
+ and m.ADVERTISMENT_NAME like concat('%',concat(#{keyword},'%'))
+ </if>
+ <if test="id != null and id != ''"> 
+ and m.id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and m.creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and m.updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and m.createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and m.updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and m.is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and m.deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and m.delete_user=#{delete_user}
+ </if>
+<if test="advertisment_name != null and advertisment_name != ''">
+ and m.advertisment_name=#{advertisment_name}
+ </if>
+<if test="position != null and position != ''">
+ and m.position=#{position}
+ </if>
+<if test="is_wheel != null and is_wheel != ''">
+ and m.is_wheel=#{is_wheel}
+ </if>
+<if test="wheel_time != null and wheel_time != ''">
+ and m.wheel_time=#{wheel_time}
+ </if>
+<if test="type_id != null and type_id != ''">
+ and m.type_id=#{type_id}
+ </if>
+<if test="is_enable != null and is_enable != ''">
+ and m.is_enable=#{is_enable}
+ </if>
+</select>
+
+</mapper>

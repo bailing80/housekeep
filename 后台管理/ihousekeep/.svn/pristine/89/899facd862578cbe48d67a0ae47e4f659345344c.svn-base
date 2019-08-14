@@ -1,0 +1,183 @@
+.mytitle{
+	font-size: 30px;
+}
+.router_span{
+	font-size: 40px;
+    color: #199ED8;
+}
+
+.mytitle hr{
+	border-color: #777;
+}
+.content{
+	padding: 0 20px;
+}
+ul li{
+	list-style: none;
+}
+.mybox-shadow{
+	box-shadow: 2px -1px 15px rgba(215,215,215,0.5);
+}
+.dispalyflex{
+	display: flex;
+	justify-content: space-around;
+	border: 1px solid #336699;
+	border-radius: 10px;
+}
+.dispalyflex li{
+	padding: 20px;
+	border-right: 1px solid #336699;
+}
+.dispalyflex .lastli{
+	border: none;
+}
+
+.mydisplay{
+	display: flex;
+}
+.borderradiusright{
+	border: 1px solid #666;
+	border-top-right-radius: 200px;
+	border-bottom-right-radius: 200px;
+}
+#loding{
+	position: absolute;
+	display: none;
+	width: 100vw;
+	height: 100%;
+	background: rgba(51,51,51,0.5);
+	top: 0px;
+	left: 0px;
+	padding-top: 20vw;
+	text-align: center;
+}
+.lodingtext{
+	display: block;
+	margin-top: 20px;
+	font-size: 18px;
+	color: #ececec;
+	padding-left: 20px; 
+}
+.mydispalyflex{
+	display: flex;
+	justify-content: space-between;
+}
+.myul li{
+	width: 20%;
+	margin-right:20px;
+	text-align: left;
+	border: 1px solid #ececec;
+}
+.myul li p{
+	padding: 4px;
+	padding-left:10px;
+}
+.mytable{
+	border: 1px solid #ddddde;
+}
+.table>thead>tr>th{
+	border: none;
+}
+.mytable tr td,.mytable thead tr th{
+	border-right: 1px solid #ddddde;
+	padding-top: 14px;
+    padding-bottom: 14px;
+}
+.from_input{
+	windth: auto;
+	margin-lef: 10px;
+}
+
+
+.padd_mar0{
+	padding: 0px;
+	margin: 0;
+}
+.text_left{
+	text-align: left;
+}
+.pddingleft10{
+	padding: 0 10px;
+}
+.mypadding{
+	padding: 0 40px;
+}
+.myalignleft{
+	text-align: left;
+}
+.padding20{
+	padding: 20px;
+}
+.padding10{
+	padding: 10px;
+}
+.paddingleftright30{
+	padding-right: 40px;
+	padding-left: 30px; 
+}
+.margintop20{
+	margin: 20px 0px;
+}
+.margin_top40{
+	margin-top: 40px;
+}
+.marginright30{
+	margin-right: 30px;
+}
+.marginright130{
+	margin-right: 15vw;
+}
+.marginleft130{
+	margin-left: 3vw;
+}
+.font25{
+	font-size: 25px;
+}
+.font20{
+	font-size: 20px;
+}
+.font16{
+	font-size: 16px;
+}
+.font30{
+	font-size: 30px;
+}
+.colorred{
+	color: red;
+}
+.colorwhite{
+	color: white;
+}
+.colorblack{
+	color: black;
+}
+.colorecece{
+	color: #999;
+}
+.bg_color009933{
+	background-color: #009933;
+}
+.bg_color199ED8{
+	background-color: #199ED8;
+}
+.bg_colorF39B76{
+	background-color: #F39B76;
+}
+.bg_colorAFC785{
+	background-color: #AFC785;
+}
+.bg_colorF9B550{
+	background-color: #F9B550;
+}
+.bg_color56BDDF{
+	background-color: #56BDDF;
+}
+.bg_colorEFEFEF{
+	background-color: #EFEFEF;
+}
+.line_height{
+	line-height: 46px;
+}
+#datalose{
+	height: 100px;
+}

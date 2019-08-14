@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ccunix.ihousekeeping.coupon_manager.dao.Coupon_manager_Dao_Iface">
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.coupon_manager.domain.Coupon_manager"
+		id="result_coupon_manager" />
+	<parameterMap
+		type="com.ccunix.ihousekeeping.coupon_manager.domain.Coupon_manager"
+		id="param_coupon_manager" />
+
+	<select id="queryAll_coupon_manager"
+		parameterMap="param_coupon_manager" resultMap="result_coupon_manager">
+		select rownum num,
+		m.ID,m.CREATOR_NAME,m.BATCH_CODE,m.coupon_project_name,t.type_name,BATCH_TOTAL
+		from t_u_coupon_manager m,t_u_coupon_type t where
+		m.coupon_type_id=t.id and m.is_delete != 1
+		<if test="id != null and id != ''">
+			and m.id=#{id}
+		</if>
+		<if test="createtime != null and createtime != ''">
+			and createtime=#{createtime}
+		</if>
+		<if test="delete_user != null and delete_user != ''">
+			and delete_user=#{delete_user}
+		</if>
+		<if test="updater != null and updater != ''">
+			and updater=#{updater}
+		</if>
+		<if test="creator != null and creator != ''">
+			and creator=#{creator}
+		</if>
+		<if test="deletetime != null and deletetime != ''">
+			and deletetime=#{deletetime}
+		</if>
+		<if test="is_delete != null and is_delete != ''">
+			and is_delete=#{is_delete}
+		</if>
+		<if test="updatetime != null and updatetime != ''">
+			and updatetime=#{updatetime}
+		</if>
+		<if
+			test="coupon_project_name != null and coupon_project_name != ''">
+			and coupon_project_name=#{coupon_project_name}
+		</if>
+		<if test="creator_name != null and creator_name != ''">
+			and creator_name=#{creator_name}
+		</if>
+		<if test="batch_code != null and batch_code != ''">
+			and batch_code=#{batch_code}
+		</if>
+		<if test="batch_total != null and batch_total != ''">
+			and batch_total=#{batch_total}
+		</if>
+		<if test="coupon_type_id != null and coupon_type_id != ''">
+			and coupon_type_id=#{coupon_type_id}
+		</if>
+		<if test="type_name != null and type_name != ''">
+			and type_name=#{type_name}
+		</if>
+	</select>
+
+
+	<select id="getCouponBatchcode_int" resultType="int">
+		select
+		COUPONBATCHCODE_SEQ.nextval from dual
+	</select>
+
+	<select id="getCouponExchangeCode_int" resultType="int">
+		select
+		COUPONEXCHANGECODE_SEQ.nextval from dual
+	</select>
+
+
+</mapper>

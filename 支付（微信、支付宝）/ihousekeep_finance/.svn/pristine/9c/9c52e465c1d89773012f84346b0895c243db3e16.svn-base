@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/html/base/baseurl.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="<%=baseurl%>/js/jquery.js"></script>
+<script src="<%=baseurl%>/js/base.js" type="text/javascript"></script>
+<script src="<%=baseurl%>/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<script type="text/javascript"
+		src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<h2>微信支付</h2>
+	<script>
+		$(document).ready(function() {
+			$("#yuzhifu").click(function() {
+
+				//js方法的调用
+				yuzhifu();
+			});
+		});
+
+		function yuzhifu() {
+			//通过Ajax调用
+			$.ajax({
+				url : getRootPath() + "/Pay_Controller/yuxiadan.action",
+				data : null,
+				success : info
+			});
+		}
+
+		function info(data) {
+			var d = $(data);
+			//页面跳转，并将code_url传到另一个页面中
+			location.href = getRootPath()
+					+ "/BaseMultiController/toPage.action?page=main/wechatpay/qrcode&param="+5;
+		}
+	</script>
+	<input type="button" value=支付 id="yuzhifu">
+</body>
+</html>

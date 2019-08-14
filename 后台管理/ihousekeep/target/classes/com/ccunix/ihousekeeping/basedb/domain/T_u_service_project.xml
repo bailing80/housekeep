@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_u_service_project_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_service_project" id="result_T_u_service_project"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_service_project" id="param_T_u_service_project"/>
+<insert id="insert_t_u_service_project" parameterMap="param_T_u_service_project" >
+
+insert into t_u_service_project   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="project_name != null and project_name != ''">
+project_name,
+ </if>
+<if test="project_order != null and project_order != ''">
+project_order,
+ </if>
+<if test="is_show != null and is_show != ''">
+is_show,
+ </if>
+<if test="on_price != null and on_price != ''">
+on_price,
+ </if>
+<if test="top_picture != null and top_picture != ''">
+top_picture,
+ </if>
+<if test="front_picture != null and front_picture != ''">
+front_picture,
+ </if>
+<if test="picture_bef != null and picture_bef != ''">
+picture_bef,
+ </if>
+<if test="picture_aft != null and picture_aft != ''">
+picture_aft,
+ </if>
+<if test="introduce != null and introduce != ''">
+introduce,
+ </if>
+<if test="characteristic != null and characteristic != ''">
+characteristic,
+ </if>
+<if test="front_picture_link != null and front_picture_link != ''">
+front_picture_link,
+ </if>
+<if test="picture_bef_link != null and picture_bef_link != ''">
+picture_bef_link,
+ </if>
+<if test="picture_aft_link != null and picture_aft_link != ''">
+picture_aft_link,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="project_name != null and project_name != ''">
+#{project_name},
+ </if>
+<if test="project_order != null and project_order != ''">
+#{project_order},
+ </if>
+<if test="is_show != null and is_show != ''">
+#{is_show},
+ </if>
+<if test="on_price != null and on_price != ''">
+#{on_price},
+ </if>
+<if test="top_picture != null and top_picture != ''">
+#{top_picture},
+ </if>
+<if test="front_picture != null and front_picture != ''">
+#{front_picture},
+ </if>
+<if test="picture_bef != null and picture_bef != ''">
+#{picture_bef},
+ </if>
+<if test="picture_aft != null and picture_aft != ''">
+#{picture_aft},
+ </if>
+<if test="introduce != null and introduce != ''">
+#{introduce},
+ </if>
+<if test="characteristic != null and characteristic != ''">
+#{characteristic},
+ </if>
+<if test="front_picture_link != null and front_picture_link != ''">
+#{front_picture_link},
+ </if>
+<if test="picture_bef_link != null and picture_bef_link != ''">
+#{picture_bef_link},
+ </if>
+<if test="picture_aft_link != null and picture_aft_link != ''">
+#{picture_aft_link},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_u_service_project" parameterMap="param_T_u_service_project" >
+update t_u_service_project set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_u_service_project" parameterMap="param_T_u_service_project" >update t_u_service_project   
+
+<set>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="project_name != null and project_name != ''">
+project_name=#{project_name},
+ </if>
+<if test="project_order != null and project_order != ''">
+project_order=#{project_order},
+ </if>
+<if test="is_show != null and is_show != ''">
+is_show=#{is_show},
+ </if>
+<if test="on_price != null and on_price != ''">
+on_price=#{on_price},
+ </if>
+<if test="top_picture != null and top_picture != ''">
+top_picture=#{top_picture},
+ </if>
+<if test="front_picture != null and front_picture != ''">
+front_picture=#{front_picture},
+ </if>
+<if test="picture_bef != null and picture_bef != ''">
+picture_bef=#{picture_bef},
+ </if>
+<if test="picture_aft != null and picture_aft != ''">
+picture_aft=#{picture_aft},
+ </if>
+<if test="introduce != null and introduce != ''">
+introduce=#{introduce},
+ </if>
+<if test="characteristic != null and characteristic != ''">
+characteristic=#{characteristic},
+ </if>
+<if test="front_picture_link != null and front_picture_link != ''">
+front_picture_link=#{front_picture_link},
+ </if>
+<if test="picture_bef_link != null and picture_bef_link != ''">
+picture_bef_link=#{picture_bef_link},
+ </if>
+<if test="picture_aft_link != null and picture_aft_link != ''">
+picture_aft_link=#{picture_aft_link},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_u_service_project" parameterMap="param_T_u_service_project"  resultMap="result_T_u_service_project">
+select ID,CREATOR,UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER,PROJECT_NAME,PROJECT_ORDER,IS_SHOW,ON_PRICE,TOP_PICTURE,FRONT_PICTURE,PICTURE_BEF,PICTURE_AFT,INTRODUCE,CHARACTERISTIC,FRONT_PICTURE_LINK,PICTURE_BEF_LINK,PICTURE_AFT_LINK
+ from t_u_service_project where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="project_name != null and project_name != ''">
+ and project_name=#{project_name}
+ </if>
+<if test="project_order != null and project_order != ''">
+ and project_order=#{project_order}
+ </if>
+<if test="is_show != null and is_show != ''">
+ and is_show=#{is_show}
+ </if>
+<if test="on_price != null and on_price != ''">
+ and on_price=#{on_price}
+ </if>
+<if test="top_picture != null and top_picture != ''">
+ and top_picture=#{top_picture}
+ </if>
+<if test="front_picture != null and front_picture != ''">
+ and front_picture=#{front_picture}
+ </if>
+<if test="picture_bef != null and picture_bef != ''">
+ and picture_bef=#{picture_bef}
+ </if>
+<if test="picture_aft != null and picture_aft != ''">
+ and picture_aft=#{picture_aft}
+ </if>
+<if test="introduce != null and introduce != ''">
+ and introduce=#{introduce}
+ </if>
+<if test="characteristic != null and characteristic != ''">
+ and characteristic=#{characteristic}
+ </if>
+<if test="front_picture_link != null and front_picture_link != ''">
+ and front_picture_link=#{front_picture_link}
+ </if>
+<if test="picture_bef_link != null and picture_bef_link != ''">
+ and picture_bef_link=#{picture_bef_link}
+ </if>
+<if test="picture_aft_link != null and picture_aft_link != ''">
+ and picture_aft_link=#{picture_aft_link}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

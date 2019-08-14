@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.t_lz_systemacct.dao.T_lz_systemacct_Dao_Iface_r" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.t_lz_systemacct.domain.T_lz_systemacct_r" id="result_T_lz_systemacct"/>
+<parameterMap type="com.ccunix.ihousekeeping.t_lz_systemacct.domain.T_lz_systemacct_r" id="param_T_lz_systemacct"/>
+<insert id="insert_t_lz_systemacct" parameterMap="param_T_lz_systemacct" >
+
+insert into t_lz_systemacct   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="receive_type != null and receive_type != ''">
+receive_type,
+ </if>
+<if test="system_acct != null and system_acct != ''">
+system_acct,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="receive_type != null and receive_type != ''">
+#{receive_type},
+ </if>
+<if test="system_acct != null and system_acct != ''">
+#{system_acct},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_lz_systemacct" parameterMap="param_T_lz_systemacct" >
+update t_lz_systemacct set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_lz_systemacct" parameterMap="param_T_lz_systemacct" >update t_lz_systemacct   
+
+<set>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="receive_type != null and receive_type != ''">
+receive_type=#{receive_type},
+ </if>
+<if test="system_acct != null and system_acct != ''">
+system_acct=#{system_acct},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_lz_systemacct" parameterMap="param_T_lz_systemacct"  resultMap="result_T_lz_systemacct">
+select T_LZ_SYSTEMACCT.receive_type receive_type,T_LZ_RECEIVE_TYPE.TYPE_NAME TYPE_NAME,T_LZ_SYSTEMACCT.SYSTEM_ACCT SYSTEM_ACCT,T_LZ_SYSTEMACCT.ID ID  from T_LZ_RECEIVE_TYPE,T_LZ_SYSTEMACCT where T_LZ_RECEIVE_TYPE.TYPE_CODE=T_LZ_SYSTEMACCT.RECEIVE_TYPE and T_LZ_RECEIVE_TYPE.IS_DELETE!=1 and T_LZ_SYSTEMACCT.IS_DELETE!=1 
+<if test="id != null and id != ''">
+ and T_LZ_RECEIVE_TYPE.id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="receive_type != null and receive_type != ''">
+ and receive_type=#{receive_type}
+ </if>
+<if test="system_acct != null and system_acct != ''">
+ and system_acct=#{system_acct}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,10 @@
+package com.ccunix.ihousekeeping.map.dao;
+
+import java.util.List;
+
+import com.ccunix.ihousekeeping.advertisement.domain.Advertisement_Manager;
+import com.ccunix.ihousekeeping.basedb.domain.Map;
+ 
+public interface Map_H_Dao_Iface {
+	public List queryAll_map_h(Map map);
+}

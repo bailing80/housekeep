@@ -1,0 +1,116 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="./js/jquery.js"></script>
+<script src="./js/jquery.form.js"></script>
+<script type="text/javascript" src="./js/test_util.js"></script>
+<script type="text/javascript" src="./js/up_down_load.js"></script>
+ <link rel="stylesheet" href="./js/kindEditor/themes/default/default.css" />
+</head>
+
+<body>
+	上传测试:FileUpLoadController/upload.action
+	<br>
+	<form id="uploadform" action="FileUpLoadController/upload.action"
+		enctype="multipart/form-data" method="post">
+		<table>
+			<tr>
+				<td>请选择文件:</td>
+				<td><input type="file" name="file"></td>
+			</tr>
+			<tr>
+				<td><input id="sub" type="button" value="上传">
+				<button onclick="upload_callback(uploadsuccess)">上传（带回调）</button>
+				</td>
+			</tr>
+			<tr>
+				<td>服务端文件名:<label id="system_file_name"></label></td>
+			</tr>
+		</table>
+	</form>
+	<br>-------------------------------------------------------------------------------------------
+	<br> 下载测试：
+	<br>
+	<button id="download">下载测试</button><br>
+	-------------------------------------------------------------------------------------------------
+	多文件上传
+	<form id="uploadform_muti" action="FileUpLoadController/uploadMulti2.action"
+		enctype="multipart/form-data" method="post">
+		<table>
+			<tr>
+				<td>请选择文件1:</td>
+				<td><input type="file" name="file1"></td>
+			</tr>
+			<tr>
+				<td>请选择文件2:</td>
+				<td><input type="file" name="file2"></td>
+			</tr>
+			<!--  
+			<tr>
+				<td>请选择文件3:</td>
+				<td><input type="file" name="file3"></td>
+			</tr>
+			<tr>
+				<td>请选择文件4:</td>
+				<td><input type="file" name="file4"></td>
+			</tr>
+			<tr>
+				<td>请选择文件5:</td>
+				<td><input type="file" name="file5"></td>
+			</tr>
+			<tr>
+				<td>请选择文件6:</td>
+				<td><input type="file" name="file6"></td>
+			</tr>
+			<tr>
+				<td>请选择文件7:</td>
+				<td><input type="file" name="file7"></td>
+			</tr>
+			<tr>
+				<td>请选择文件8:</td>
+				<td><input type="file" name="file8"></td>
+			</tr>
+			-->
+			<tr>
+				<td><input id="submuti" type="button" value="上传"></td>
+			</tr>
+			<tr>
+				<td>服务端文件名:<label id="system_file_name_muti"></label></td>
+			</tr>
+		</table>
+	</form>
+	
+	<!-- ----------------富文本编辑器测试--------------------------------- -->
+	<script type="text/javascript" src="./js/kindEditor/kindeditor-all.js" ></script>
+
+   <textarea id="description"></textarea>
+   
+   <script type="text/javascript">
+   KindEditor.ready(function(K){
+	   window.editor = K.create("#description");
+   });
+   function save_text(){
+	   var html =  window.editor.sync().html();
+	   $.ajax({
+		   url : "EditorController/saveEditor.action",
+		   data : "text="+html,
+		   type: "post",
+		   success : save_text_success
+	   });
+	   //alert(html);
+   }
+   
+   function save_text_success(data){
+	   alert(data);
+   }
+   </script>
+	
+	<button onclick="save_text();">富文本保存</button>
+
+
+</body>
+
+</html>

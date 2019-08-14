@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+
+<input  type="text" readonly="readonly" id="control_url" value="/Register_Controller_4M/doregister">
+
+    <form action="/Register_Controller_4M/doregister" method="post">
+
+	<table border="1" width="400px">
+		<tr>
+			<td width="100px">用户id</td>
+			<td width="100px">account</td>
+			<td><input type="text"></td>
+		</tr>
+		<tr>
+			<td>密码</td>
+			<td>pwd</td>
+			<td><input type="text"></td>
+		</tr>
+		<tr>
+			<td>确认密码</td>
+			<td>confirmPassword</td>
+			<td><input type="text"></td>
+		</tr>
+		<tr>
+			<td>用户坐标</td>
+			<td>gps</td>
+			<td><input type="text"></td>
+		</tr>
+		<tr>
+			<td>验证码</td>
+			<td>valid_mobile</td>
+		    <td><input type="text"></td>
+		</tr>
+		<tr>
+			<td>APP操作系统编号</td>
+			<td>operating_system_for_user_code</td>
+		    <td><input type="text"></td>
+		</tr>
+		<tr>
+			<td>APP操作系统名称</td>
+			<td>operating_system_for_user_name</td>
+		    <td><input type="text"></td>
+		</tr>	
+	 </table>
+    </form>
+
+</body>
+</html>

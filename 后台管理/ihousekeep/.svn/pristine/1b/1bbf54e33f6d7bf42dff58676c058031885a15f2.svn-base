@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.unit.dao.T_s_unit_Dao_Iface_r" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.unit.domain.T_s_unit_r" id="result_T_s_unit"/>
+<parameterMap type="com.ccunix.ihousekeeping.unit.domain.T_s_unit_r" id="param_T_s_unit"/>
+
+<insert id="insert_t_s_unit" parameterMap="param_T_s_unit" >
+
+insert into t_s_unit   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="unit_name != null and unit_name != ''">
+unit_name,
+ </if>
+<if test="unit_sign != null and unit_sign != ''">
+unit_sign,
+ </if>
+<if test="id != null and id != ''">
+id,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="unit_name != null and unit_name != ''">
+#{unit_name},
+ </if>
+<if test="unit_sign != null and unit_sign != ''">
+#{unit_sign},
+ </if>
+<if test="id != null and id != ''">
+#{id},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_s_unit" parameterMap="param_T_s_unit" >
+update t_s_unit set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_s_unit" parameterMap="param_T_s_unit" >update t_s_unit   
+
+<set>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="unit_name != null and unit_name != ''">
+unit_name=#{unit_name},
+ </if>
+<if test="unit_sign != null and unit_sign != ''">
+unit_sign=#{unit_sign},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_s_unit" parameterMap="param_T_s_unit"  resultMap="result_T_s_unit">
+select  UNIT_NAME,UNIT_SIGN,ID
+ from t_s_unit where is_delete != 1
+ <if test="keyword != '' and keyword != null">
+ and UNIT_NAME like concat('%',concat(#{keyword},'%'))
+ </if>
+ <if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="unit_name != null and unit_name != ''">
+ and unit_name=#{unit_name}
+ </if>
+<if test="unit_sign != null and unit_sign != ''">
+ and unit_sign=#{unit_sign}
+ </if>
+<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_u_member_address_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_member_address" id="result_T_u_member_address"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_u_member_address" id="param_T_u_member_address"/>
+<insert id="insert_t_u_member_address" parameterMap="param_T_u_member_address" >
+
+insert into t_u_member_address   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="member_id != null and member_id != ''">
+member_id,
+ </if>
+<if test="t_u_id != null and t_u_id != ''">
+t_u_id,
+ </if>
+<if test="address != null and address != ''">
+address,
+ </if>
+<if test="is_default != null and is_default != ''">
+is_default,
+ </if>
+<if test="name != null and name != ''">
+name,
+ </if>
+<if test="conn_phone != null and conn_phone != ''">
+conn_phone,
+ </if>
+<if test="door_number != null and door_number != ''">
+door_number,
+ </if>
+<if test="apartment_id != null and apartment_id != ''">
+apartment_id,
+ </if>
+<if test="true_area != null and true_area != ''">
+true_area,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="member_id != null and member_id != ''">
+#{member_id},
+ </if>
+<if test="t_u_id != null and t_u_id != ''">
+#{t_u_id},
+ </if>
+<if test="address != null and address != ''">
+#{address},
+ </if>
+<if test="is_default != null and is_default != ''">
+#{is_default},
+ </if>
+<if test="name != null and name != ''">
+#{name},
+ </if>
+<if test="conn_phone != null and conn_phone != ''">
+#{conn_phone},
+ </if>
+<if test="door_number != null and door_number != ''">
+#{door_number},
+ </if>
+<if test="apartment_id != null and apartment_id != ''">
+#{apartment_id},
+ </if>
+<if test="true_area != null and true_area != ''">
+#{true_area},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_u_member_address" parameterMap="param_T_u_member_address" >
+update t_u_member_address set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_u_member_address" parameterMap="param_T_u_member_address" >update t_u_member_address   
+
+<set>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="member_id != null and member_id != ''">
+member_id=#{member_id},
+ </if>
+<if test="t_u_id != null and t_u_id != ''">
+t_u_id=#{t_u_id},
+ </if>
+<if test="address != null and address != ''">
+address=#{address},
+ </if>
+<if test="is_default != null and is_default != ''">
+is_default=#{is_default},
+ </if>
+<if test="name != null and name != ''">
+name=#{name},
+ </if>
+<if test="conn_phone != null and conn_phone != ''">
+conn_phone=#{conn_phone},
+ </if>
+<if test="door_number != null and door_number != ''">
+door_number=#{door_number},
+ </if>
+<if test="apartment_id != null and apartment_id != ''">
+apartment_id=#{apartment_id},
+ </if>
+<if test="true_area != null and true_area != ''">
+true_area=#{true_area},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_u_member_address" parameterMap="param_T_u_member_address"  resultMap="result_T_u_member_address">
+select CREATETIME,DELETE_USER,UPDATER,CREATOR,DELETETIME,IS_DELETE,UPDATETIME,MEMBER_ID,T_U_ID,ADDRESS,IS_DEFAULT,NAME,CONN_PHONE,DOOR_NUMBER,APARTMENT_ID,TRUE_AREA
+ from t_u_member_address where is_delete != 1<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="member_id != null and member_id != ''">
+ and member_id=#{member_id}
+ </if>
+<if test="t_u_id != null and t_u_id != ''">
+ and t_u_id=#{t_u_id}
+ </if>
+<if test="address != null and address != ''">
+ and address=#{address}
+ </if>
+<if test="is_default != null and is_default != ''">
+ and is_default=#{is_default}
+ </if>
+<if test="name != null and name != ''">
+ and name=#{name}
+ </if>
+<if test="conn_phone != null and conn_phone != ''">
+ and conn_phone=#{conn_phone}
+ </if>
+<if test="door_number != null and door_number != ''">
+ and door_number=#{door_number}
+ </if>
+<if test="apartment_id != null and apartment_id != ''">
+ and apartment_id=#{apartment_id}
+ </if>
+<if test="true_area != null and true_area != ''">
+ and true_area=#{true_area}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.matched_order.dao.Matched_Order_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.matched_order.domain.Matched_Order" id="result_Matched_Order"/>
+<parameterMap type="com.ccunix.ihousekeeping.matched_order.domain.Matched_Order" id="param_Matched_Order"/>
+<select id="queryAll_matched_order" parameterMap="param_Matched_Order"  resultMap="result_Matched_Order">
+<!-- select rownum rownumber,ID,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD HH24:MI:SS') CREATETIME_str,DELETE_USER,UPDATER,CREATOR,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD HH24:MI:SS') DELETETIME_str,IS_DELETE,UPDATETIME,to_char(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') UPDATETIME_str,ORDER_NO,ORDER_TIME,to_char(ORDER_TIME,'YYYY-MM-DD HH24:MI:SS') ORDER_TIME_str,APPOINTMENT_TIME,to_char(APPOINTMENT_TIME,'YYYY-MM-DD HH24:MI:SS') APPOINTMENT_TIME_str,MEMBER_ID,ORDER_STATUS,SEND_MEMBER,RIDER_ID,IS_SPLIT,CANCEL_ROLE,CANCEL_MEMBER,PAY_FUN,PAY_TIME,to_char(PAY_TIME,'YYYY-MM-DD HH24:MI:SS') PAY_TIME_str,PAY_NO,ORDER_TOTAL_MONEY,ORDER_PAY_MONEY,IS_COUPON,COUPON_TYPE_ID,COUPON_MONEY,ORDER_OVER_TIME,to_char(ORDER_OVER_TIME,'YYYY-MM-DD HH24:MI:SS') ORDER_OVER_TIME_str
+ from t_u_order where is_delete != 1 and order_status='03' -->
+select rownum rownumber,a.ID id,a.USER_PHONE,a.NICK_NAME,b.ADDRESS,c.order_no,c.member_id,c.order_status,to_char(c.ORDER_TIME,'YYYY-MM-DD HH24:MI:SS') ORDER_TIME_str
+,to_char(c.APPOINTMENT_TIME,'YYYY-MM-DD HH24:MI:SS') APPOINTMENT_TIME_str,c.PAY_FUN,c.rider_id,
+to_char(c.PAY_TIME,'YYYY-MM-DD HH24:MI:SS') PAY_TIME_str,c.ORDER_TOTAL_MONEY,c.ORDER_PAY_MONEY,d.coupon_type_id,d.money,
+e.item_name,e.project_id 
+ from t_u_member a left outer join T_U_MEMBER_ADDRESS b
+on a.id=b.member_id left outer join t_u_order c on
+b.id = c.id left outer join T_U_COUPON d on c.id= d.id
+left outer join t_u_service_item e on c.id= e.id
+left outer join t_u_order_detail f on c.id= f.id
+ where  c.is_delete != 1 and c.order_status='04'
+<if test="id != null and id != ''">
+ and a.id=#{id}
+  </if>
+ <if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="order_no != null and order_no != ''">
+ and order_no=#{order_no}
+ </if>
+<if test="order_time != null and order_time != ''">
+ and order_time=#{order_time}
+ </if>
+<if test="appointment_time != null and appointment_time != ''">
+ and appointment_time=#{appointment_time}
+ </if>
+<if test="member_id != null and member_id != ''">
+ and member_id=#{member_id}
+ </if>
+<if test="order_status != null and order_status != ''">
+ and order_status=#{order_status}
+ </if>
+<if test="send_member != null and send_member != ''">
+ and send_member=#{send_member}
+ </if>
+<if test="rider_id != null and rider_id != ''">
+ and rider_id=#{rider_id}
+ </if>
+<if test="is_split != null and is_split != ''">
+ and is_split=#{is_split}
+ </if>
+<if test="cancel_role != null and cancel_role != ''">
+ and cancel_role=#{cancel_role}
+ </if>
+<if test="cancel_member != null and cancel_member != ''">
+ and cancel_member=#{cancel_member}
+ </if>
+<if test="pay_fun != null and pay_fun != ''">
+ and pay_fun=#{pay_fun}
+ </if>
+<if test="pay_time != null and pay_time != ''">
+ and pay_time=#{pay_time}
+ </if>
+<if test="pay_no != null and pay_no != ''">
+ and pay_no=#{pay_no}
+ </if>
+<if test="order_total_money != null and order_total_money != ''">
+ and order_total_money=#{order_total_money}
+ </if>
+<if test="order_pay_money != null and order_pay_money != ''">
+ and order_pay_money=#{order_pay_money}
+ </if>
+<if test="is_coupon != null and is_coupon != ''">
+ and is_coupon=#{is_coupon}
+ </if>
+<if test="coupon_type_id != null and coupon_type_id != ''">
+ and coupon_type_id=#{coupon_type_id}
+ </if>
+<if test="coupon_money != null and coupon_money != ''">
+ and coupon_money=#{coupon_money}
+ </if>
+<if test="order_over_time != null and order_over_time != ''">
+ and order_over_time=#{order_over_time}
+ </if>
+ <if test="user_phone != null and user_phone != ''">
+and user_phone=#{user_phone}
+</if>
+<if test="nick_name != null and nick_name != ''">
+and nick_name=#{nick_name}
+</if>
+<if test="address != null and address != ''">
+and address=#{address}
+</if>
+<if test="money != null and money != ''">
+and money=#{money}
+</if>
+<if test="item_name != null and item_name != ''">
+and item_name=#{item_name}
+</if>
+<if test="project_id != null and project_id != ''">
+and project_id=#{project_id}
+</if>
+</select>
+
+
+<select id="getOrderNo_seq" resultType="int">
+select ORDERNO_SEQ.nextval from dual
+</select>
+
+
+</mapper>

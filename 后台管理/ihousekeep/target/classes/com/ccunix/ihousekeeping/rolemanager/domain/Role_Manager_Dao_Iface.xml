@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.rolemanager.dao.Role_Manager_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.rolemanager.domain.Role_Manager" id="result_T_s_user_manager_role"/>
+<parameterMap type="com.ccunix.ihousekeeping.rolemanager.domain.Role_Manager" id="param_Role_Manager"/>
+<select id="queryAll_role_manager" parameterMap="param_Role_Manager"  resultMap="result_T_s_user_manager_role">
+select rownum num,ID, NAME,DESCRIPTION,THIS_LEVEL,PARENT_ID
+ from t_s_user_manager_role  where is_delete != 1
+ 
+<if test="keyword != '' and keyword != null">
+and NAME like concat('%',concat(#{keyword},'%'))
+</if>
+ <if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="name != null and name != ''">
+ and name=#{name}
+ </if>
+<if test="description != null and description != ''">
+ and description=#{description}
+ </if>
+<if test="this_level != null and this_level != ''">
+ and this_level=#{this_level}
+ </if>
+<if test="parent_id != null and parent_id != ''">
+ and parent_id=#{parent_id}
+ </if>
+</select>
+
+</mapper>

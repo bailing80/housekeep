@@ -1,0 +1,125 @@
+#agentmanager{
+float: left;
+font-size: 25px;
+color: rgb(98,171,210);
+margin-right:10px;
+margin-left: 20px;
+margin-top: 5px;
+ }
+ #symbol{
+ margin-top:10px;
+ float: left;
+ font-size: 20px;
+ margin-right:10px;
+ }
+ #citymanager{
+ float: left;
+ margin-right: 10px;
+ font-size: 20px;
+ margin-top: 10px;
+ }
+ 
+ #time{
+ color: rgb(103,103,103);
+ font-size: 20px;
+ margin-right: 20px;
+ }
+ #check{
+ background-color: rgb(255,153,51);
+ color: rgb(255,205,157);
+ width: 80px;
+ height: 30px;
+ border-radius:20px;
+ margin-left: 20px;
+ 
+ }
+ #send{
+ background-color: rgb(255,153,51);
+ color: rgb(255,205,157);
+ width: 80px;
+ height: 30px;
+ border-radius:20px;
+ margin-left: 20px;
+ }
+
+ #Usersaccount{
+ color: rgb(103,103,103);
+ font-size: 20px;
+ margin-right: 20px;
+ }
+ 
+ #top_1{
+ height: 60px;
+ width: 730px;
+ }
+ #font_1{
+ font-size: 25px;
+ }
+ #font_2{
+  font-size: 25px;
+  color: red;
+ }
+ #font_3{font-size: 20px;}
+ #font_4{
+ font-size: 20px;
+ color: red;
+ }
+ #font_5{font-size: 20px;}
+ #font_6{
+  font-size: 25px;
+ }
+ #font_7{
+  font-size: 25px;
+  color: red;
+ }
+ #font_8{
+ font-size: 20px;
+ color: red;
+ }
+ #font_9{
+ font-size: 20px;
+ }
+ #font_10{
+ font-size: 25px;
+  color: red;
+ }
+ #font_11{
+ font-size: 25px;
+  color: red;
+ }
+ .l{
+ float:left;
+  width: 1px;
+   height: 90px;
+   background: black;
+   margin-left: 650px;
+   margin-top: -70px;
+ }
+ #font_fenrun{
+ font-size: 30px;
+ color: red;
+ }
+ #top_2{
+ width: 680px;
+ height: 60px;
+ float: left;
+ margin-left: 600px;
+ margin-top: -80px;
+ }
+ #checkbox{
+ float: left;
+ margin-left: 750px;
+ height: 30px;
+ width: 200px;
+ }
+ #sousuobutton{
+ float: left;
+ height: 30px;
+ width:50px;
+ margin-left: 10px;
+ border-radius:7px;
+ background-color: rgb(89,177,243);
+ color:rgb(255,249,189);
+ border: none;
+ outline:none;
+ }

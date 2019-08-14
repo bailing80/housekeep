@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedbmodel.dao.Table_Dao_Iface">
+
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+
+
+	<resultMap id="table_map" type="com.ccunix.ihousekeeping.basedbmodel.domain.Table">
+
+	</resultMap>
+
+
+	<select id="queryAllTables" resultMap="table_map">
+		select a.table_name table_name,b.comments comments from
+		 user_tables a,user_tab_comments b where
+		a.TABLE_NAME=b.table_name order by table_name asc
+	</select>
+
+
+
+
+
+
+</mapper>

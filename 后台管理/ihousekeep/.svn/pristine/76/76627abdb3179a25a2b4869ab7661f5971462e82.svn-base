@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_s_user_manager_role_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_user_manager_role" id="result_T_s_user_manager_role"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_user_manager_role" id="param_T_s_user_manager_role"/>
+<insert id="insert_t_s_user_manager_role" parameterMap="param_T_s_user_manager_role" >
+
+insert into t_s_user_manager_role   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="name != null and name != ''">
+name,
+ </if>
+<if test="description != null and description != ''">
+description,
+ </if>
+<if test="this_level != null and this_level != ''">
+this_level,
+ </if>
+<if test="parent_id != null and parent_id != ''">
+parent_id,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="name != null and name != ''">
+#{name},
+ </if>
+<if test="description != null and description != ''">
+#{description},
+ </if>
+<if test="this_level != null and this_level != ''">
+#{this_level},
+ </if>
+<if test="parent_id != null and parent_id != ''">
+#{parent_id},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_s_user_manager_role" parameterMap="param_T_s_user_manager_role" >
+update t_s_user_manager_role set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_s_user_manager_role" parameterMap="param_T_s_user_manager_role" >update t_s_user_manager_role   
+
+<set>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="name != null and name != ''">
+name=#{name},
+ </if>
+<if test="description != null and description != ''">
+description=#{description},
+ </if>
+<if test="this_level != null and this_level != ''">
+this_level=#{this_level},
+ </if>
+<if test="parent_id != null and parent_id != ''">
+parent_id=#{parent_id},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_s_user_manager_role" parameterMap="param_T_s_user_manager_role"  resultMap="result_T_s_user_manager_role">
+select UPDATER,DELETE_USER,ID,NAME,DESCRIPTION,THIS_LEVEL,PARENT_ID,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD HH24:MI:SS') DELETETIME_str,IS_DELETE,UPDATETIME,to_char(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') UPDATETIME_str,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD HH24:MI:SS') CREATETIME_str,CREATOR
+ from t_s_user_manager_role where is_delete != 1<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="name != null and name != ''">
+ and name=#{name}
+ </if>
+<if test="description != null and description != ''">
+ and description=#{description}
+ </if>
+<if test="this_level != null and this_level != ''">
+ and this_level=#{this_level}
+ </if>
+<if test="parent_id != null and parent_id != ''">
+ and parent_id=#{parent_id}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

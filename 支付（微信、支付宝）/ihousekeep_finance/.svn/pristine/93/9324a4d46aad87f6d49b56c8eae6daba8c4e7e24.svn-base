@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../../css/base.css" rel="stylesheet">
+<script src="../../../js/jquery.js"></script>
+<script src="../../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../js/base_table.js"></script>
+<script type="text/javascript" src="./usermanager.js"></script>
+<script type="text/javascript" src="../../../html/admin/page/page.js"></script>
+
+</head>
+<body>
+	<div id="nav" class="btn-group">
+		<span class="label label-default">系统管理>>>用户管理</span>
+	</div>
+	<div id="fun" class="btn-group" data-toggle="buttons-checkbox">
+		<button class="btn btn-primary" id="delete_systemuser">删除</button>
+		<button class="btn btn-primary" id="new_usernamager">新增</button>
+		<button class="btn btn-primary" id="query_systemuser" style="float: left">查询</button>
+		<input id="querydata" type="text" size="2" class="form-control" style="width: 30%" value="请输入查询关键字......">
+	</div>
+	<div id="content">
+		<table id="datatable" border="1" class="table table-striped"
+			style="width: 100%">
+
+		</table>
+	</div>
+	<div id="page">
+	</div>
+
+	<div id="new_div"></div>
+	<div id="backdiv"></div>
+</body>
+
+</html>

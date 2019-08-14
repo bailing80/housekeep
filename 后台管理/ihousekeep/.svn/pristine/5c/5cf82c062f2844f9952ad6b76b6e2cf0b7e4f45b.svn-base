@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+
+<input  type="text" readonly="readonly" id="control_url" value="/Test_Controller_4X/getAll_ServiceProject">
+
+    <form action="/Test_Controller_4X/getAll_ServiceProject" method="post">
+
+	<table border="1" width="400px">
+		<tr>
+			<td width="100px">用户id</td>
+			<td width="100px">account</td>
+			<td><input type="text"></td>
+		</tr>
+	 </table>
+    </form>
+
+</body>
+</html>

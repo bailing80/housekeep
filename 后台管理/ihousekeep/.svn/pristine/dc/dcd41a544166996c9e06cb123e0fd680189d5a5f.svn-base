@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_s_advertisement_item_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_advertisement_item" id="result_T_s_advertisement_item"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_advertisement_item" id="param_T_s_advertisement_item"/>
+<insert id="insert_t_s_advertisement_item" parameterMap="param_T_s_advertisement_item" >
+
+insert into t_s_advertisement_item   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="item_url != null and item_url != ''">
+item_url,
+ </if>
+<if test="title != null and title != ''">
+title,
+ </if>
+<if test="is_sec_link != null and is_sec_link != ''">
+is_sec_link,
+ </if>
+<if test="link_title != null and link_title != ''">
+link_title,
+ </if>
+<if test="sec_url != null and sec_url != ''">
+sec_url,
+ </if>
+<if test="manger_id != null and manger_id != ''">
+manger_id,
+ </if>
+<if test="board_order != null and board_order != ''">
+board_order,
+ </if>
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="item_url != null and item_url != ''">
+#{item_url},
+ </if>
+<if test="title != null and title != ''">
+#{title},
+ </if>
+<if test="is_sec_link != null and is_sec_link != ''">
+#{is_sec_link},
+ </if>
+<if test="link_title != null and link_title != ''">
+#{link_title},
+ </if>
+<if test="sec_url != null and sec_url != ''">
+#{sec_url},
+ </if>
+<if test="manger_id != null and manger_id != ''">
+#{manger_id},
+ </if>
+<if test="board_order != null and board_order != ''">
+#{board_order},
+ </if>
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_s_advertisement_item" parameterMap="param_T_s_advertisement_item" >
+update t_s_advertisement_item set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_s_advertisement_item" parameterMap="param_T_s_advertisement_item" >update t_s_advertisement_item   
+
+<set>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="item_url != null and item_url != ''">
+item_url=#{item_url},
+ </if>
+<if test="title != null and title != ''">
+title=#{title},
+ </if>
+<if test="is_sec_link != null and is_sec_link != ''">
+is_sec_link=#{is_sec_link},
+ </if>
+<if test="link_title != null and link_title != ''">
+link_title=#{link_title},
+ </if>
+<if test="sec_url != null and sec_url != ''">
+sec_url=#{sec_url},
+ </if>
+<if test="manger_id != null and manger_id != ''">
+manger_id=#{manger_id},
+ </if>
+<if test="board_order != null and board_order != ''">
+board_order=#{board_order},
+ </if>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_s_advertisement_item" parameterMap="param_T_s_advertisement_item"  resultMap="result_T_s_advertisement_item">
+select UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER,ITEM_URL,TITLE,IS_SEC_LINK,LINK_TITLE,SEC_URL,MANGER_ID,BOARD_ORDER,ID,CREATOR
+ from t_s_advertisement_item where is_delete != 1<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="item_url != null and item_url != ''">
+ and item_url=#{item_url}
+ </if>
+<if test="title != null and title != ''">
+ and title=#{title}
+ </if>
+<if test="is_sec_link != null and is_sec_link != ''">
+ and is_sec_link=#{is_sec_link}
+ </if>
+<if test="link_title != null and link_title != ''">
+ and link_title=#{link_title}
+ </if>
+<if test="sec_url != null and sec_url != ''">
+ and sec_url=#{sec_url}
+ </if>
+<if test="manger_id != null and manger_id != ''">
+ and manger_id=#{manger_id}
+ </if>
+<if test="board_order != null and board_order != ''">
+ and board_order=#{board_order}
+ </if>
+<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

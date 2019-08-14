@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.login.dao.Login_Dao_Iface">
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.login.domain.Login" id="result_Login"/>
+<parameterMap type="com.ccunix.ihousekeeping.login.domain.Login" id="param_Login"/>
+<select id="queryAll_login" parameterMap="param_Login"  resultMap="result_Login">
+select ID,CREATETIME,DELETE_USER,UPDATER,CREATOR,DELETETIME,IS_DELETE,UPDATETIME,USER_MANAGER_ROLE_ID,PHONE,T_S_ID,PWD,IS_LOGIN,NAME
+ from t_u_manager where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="user_manager_role_id != null and user_manager_role_id != ''">
+ and user_manager_role_id=#{user_manager_role_id}
+ </if>
+<if test="phone != null and phone != ''">
+ and phone=#{phone}
+ </if>
+<if test="t_s_id != null and t_s_id != ''">
+ and t_s_id=#{t_s_id}
+ </if>
+<if test="pwd != null and pwd != ''">
+ and pwd=#{pwd}
+ </if>
+<if test="is_login != null and is_login != ''">
+ and is_login=#{is_login}
+ </if>
+<if test="name != null and name != ''">
+ and name=#{name}
+ </if>
+</select>
+
+</mapper>

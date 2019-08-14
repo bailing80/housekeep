@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ccunix.ihousekeeping.riderelegant.dao.Riderelegant_Manager_Dao_Iface">
+
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+
+
+
+	<parameterMap
+		type="com.ccunix.ihousekeeping.riderelegant.domain.T_U_Service_Item"
+		id="T_U_Service_Item" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.riderelegant.domain.T_U_Service_Item"
+		id="T_U_Service_Item" />
+	<parameterMap
+		type="com.ccunix.ihousekeeping.basedb.domain.T_u_service_item"
+		id="T_u_service_item" />
+	<parameterMap
+		type="com.ccunix.ihousekeeping.riderelegant.domain.T_U_Rider_Manager"
+		id="T_U_Rider_Manager" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.basedb.domain.T_u_service_item"
+		id="T_u_service_item" />
+
+	<resultMap
+		type="com.ccunix.ihousekeeping.riderelegant.domain.T_U_Rider"
+		id="T_U_Rider" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.riderelegant.domain.T_U_Rider_Manager"
+		id="T_U_Rider_Manager" />
+	<!-- 查询所有优秀员工 -->
+	<select id="queryAllExcellent_Rider" resultMap="T_U_Rider">
+		SELECT
+		RIDER.row_number,RIDER.id,RIDER.show_order,RIDER.photo_url,RIDER.name,RIDER.link_pic
+		FROM
+		(select ROW_NUMBER() over(order by R.ID)
+		ROW_NUMBER,R.ID,R.SHOW_ORDER,R.PHOTO_URL,R.NAME，R.LINK_PIC from
+		T_U_RIDER R
+		where R.is_delete != 1 and R.is_excellent='01' ) RIDER
+	</select>
+
+	<select id="queryAllUnexcellent_Rider" resultMap="T_U_Rider">
+		select ROW_NUMBER() over(order by R.ID)
+		ROW_NUMBER,R.ID,R.SHOW_ORDER,R.PHOTO_URL,R.NAME，R.LINK_PIC from
+		T_U_RIDER R
+		where R.is_delete != 1 and R.is_excellent !='01' OR
+		R.is_excellent is null
+		<!-- SELECT RIDER.row_number,RIDER.id,RIDER.show_order,RIDER.photo_url,RIDER.name,RIDER.link_pic 
+			FROM (select ROW_NUMBER() over(order by R.ID) ROW_NUMBER,R.ID,R.SHOW_ORDER,R.PHOTO_URL,R.NAME，R.LINK_PIC 
+			from T_U_RIDER R where R.is_delete != 1 and R.is_excellent !='01') RIDER -->
+	</select>
+
+	<select id="queryAll_Rider" resultMap="T_U_Rider">
+		SELECT
+		RIDER.row_number,RIDER.id,RIDER.show_order,RIDER.photo_url,RIDER.name,RIDER.link_pic
+		FROM
+		(select ROW_NUMBER() over(order by R.ID)
+		ROW_NUMBER,R.ID,R.SHOW_ORDER,R.PHOTO_URL,R.NAME，R.LINK_PIC from
+		T_U_RIDER R
+		where R.is_delete != 1) RIDER
+	</select>
+
+
+	<!--查询所有管理员工信息 -->
+	<select id="queryAllManager_Rider" resultMap="T_U_Rider_Manager">
+		<!-- select ROW_NUMBER()over(order by TA.ID) ROW_NUMBER,TA.NAME,TB.NAME 
+			LEADER_NAME,TA.PHOTO_URL,TA.PHONE,TA.RIDER_CODE,TA.RIDER_SUM, TA.IS_EXCELLENT,TA.IS_SHOW,TA.ID,MANAGER.NAME 
+			LEVEL_NAME from T_U_RIDER TA LEFT JOIN T_U_RIDER TB ON TA.LEADER_ID=TB.ID,T_S_USER_MANAGER_ROLE 
+			MANAGER where TA.IS_DELETE!=1 AND TA.USER_MANAGER_ROLE_ID = MANAGER.ID -->
+		select
+		ROW_NUMBER()over(order by A.ROW_NUMBER)
+		ROW_NUMBER,A.NAME,A.LEADER_NAME,A.PHOTO_URL,A.PHONE , A.RIDER_CODE ,
+		A.RIDER_SUM,A.IS_EXCELLENT,A.IS_SHOW,A.ID,MANAGER.NAME LEVEL_NAME
+		FROM
+		(select
+		ROW_NUMBER()over(order by TA.ID) ROW_NUMBER,TA.NAME,TB.NAME
+		LEADER_NAME,TA.PHOTO_URL,TA.PHONE,TA.RIDER_CODE,TA.RIDER_SUM,
+		TA.IS_EXCELLENT,TA.IS_SHOW,TA.ID,TA.USER_MANAGER_ROLE_ID
+		from
+		T_U_RIDER
+		TA LEFT JOIN T_U_RIDER TB ON TA.LEADER_ID=TB.ID
+		where TA.IS_DELETE!=1
+		)A LEFT JOIN T_S_USER_MANAGER_ROLE MANAGER ON A.USER_MANAGER_ROLE_ID =
+		MANAGER.ID
+	</select>
+	<select id="queryByManager_Rider" resultMap="T_U_Rider_Manager"
+		parameterMap="T_U_Rider_Manager">
+		select
+		ROW_NUMBER()over(order by A.ROW_NUMBER)
+		ROW_NUMBER,A.NAME,A.LEADER_NAME,A.PHOTO_URL,A.PHONE , A.RIDER_CODE ,
+		A.RIDER_SUM,A.IS_EXCELLENT,A.IS_SHOW,A.ID,MANAGER.NAME LEVEL_NAME
+		FROM
+		(select
+		ROW_NUMBER()over(order by TA.ID) ROW_NUMBER,TA.NAME,TB.NAME
+		LEADER_NAME,TA.PHOTO_URL,TA.PHONE,TA.RIDER_CODE,TA.RIDER_SUM,
+		TA.IS_EXCELLENT,TA.IS_SHOW,TA.ID,TA.USER_MANAGER_ROLE_ID
+		from
+		T_U_RIDER
+		TA LEFT JOIN T_U_RIDER TB ON TA.LEADER_ID=TB.ID
+		where TA.IS_DELETE!=1 AND TA.ID=#{id}
+		)A LEFT JOIN T_S_USER_MANAGER_ROLE MANAGER ON A.USER_MANAGER_ROLE_ID =
+		MANAGER.ID 
+	</select>
+
+	<!-- 查询某一员工的所有子项目 -->
+	<select id="queryAllItem_Name" resultMap="T_U_Service_Item"
+		parameterMap="T_U_Service_Item">
+
+		SELECT
+		ITEM.ID,ITEM.ITEM_NAME,SERVICE.RIDER_ID
+		FROM
+
+		T_U_SERVICE_ITEM ITEM
+		LEFT JOIN
+		(SELECT
+		RIDER_ID,SERVICE_ITEM_ID
+		FROM
+		T_U_RIDE_SERVICE_ITEM
+		where IS_DELETE!=1 AND RIDER_ID = #{rider_id}) SERVICE ON ITEM.ID =
+		SERVICE.SERVICE_ITEM_ID
+		WHERE ITEM.IS_DELETE!=1
+		<!-- SELECT SERVICE_ITEM.RIDER_ID,ITEM.ITEM_NAME FROM T_U_RIDER RIDER ,T_U_RIDE_SERVICE_ITEM 
+			SERVICE_ITEM,T_U_SERVICE_ITEM ITEM WHERE RIDER.ID=SERVICE_ITEM.RIDER_ID AND 
+			SERVICE_ITEM.SERVICE_ITEM_ID = ITEM.ID AND RIDER.IS_DELETE !='1' AND SERVICE_ITEM.IS_DELETE 
+			!='1' AND ITEM.IS_DELETE!='1' AND SERVICE_ITEM.RIDER_ID=#{id} -->
+	</select>
+
+
+	<update id="delete_By_Rider" parameterMap="T_u_service_item">
+		UPDATE
+		T_U_RIDE_SERVICE_ITEM SET IS_DELETE = 1 WHERE RIDER_ID = #{id}
+	</update>
+
+</mapper>

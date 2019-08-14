@@ -1,0 +1,13 @@
+
+table td{ 
+max-width:500px; 
+word-wrap:
+break-word; 
+text-overflow:ellipsis; 
+white-space:nowrap; 
+overflow:hidden; 
+}
+table td:hover{ 
+white-space:normal; 
+overflow:auto;
+}

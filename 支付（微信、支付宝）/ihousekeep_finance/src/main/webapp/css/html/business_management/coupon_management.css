@@ -1,0 +1,80 @@
+.contentBoday{
+	padding: 20px;
+}
+.myHeader{
+	background-color: #4DB871;
+	border-radius: 5px;
+/* 	height: 100px; */
+/* 	padding-top: 10px; */
+}
+.divList{
+	padding: 4px 0;
+	border-right: 1px solid #FFF;
+}
+.divList input,.divList select{
+	width: 80% !important;
+	
+}
+.myHeader .form-inline .myhidden{
+	display: none;
+}
+.divList input::-webkit-input-placeholder{
+	color: #999;
+}
+.mytextarea{
+	outline: none;
+/* 	background-color: #4DB871; */
+	color: #000;
+	border: none;
+	box-shadow: none;
+}
+hr{
+	margin: 5px 0 0 8px;
+	width: 82%;
+}
+.mydispaly{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-content: center;
+}
+.btn_radius_left{
+	color: #fff;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+.btn_radius_right{
+	color: #fff;
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+}
+.paddingleft5px{
+	padding-left: 5px; 
+	padding-right: 0; 
+}
+.nodisplay{
+	display: flex;
+	justify-content: space-between;
+}
+.error { color: red; }
+.bg_colorFF9900{
+	background-color: #ff9900;
+}
+.bg_colorFF0000{
+	background-color: #ff0000;
+}
+.bg_colorF2F2F2{
+	background-color: #F2F2F2;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+	background-color: #FFFFFF;
+}
+.line_height{
+	line-height: 100%;
+}
+.width16vw{
+	width: 8%;
+}
+.paddingtop2vw{
+	padding-top: 2vw;
+}

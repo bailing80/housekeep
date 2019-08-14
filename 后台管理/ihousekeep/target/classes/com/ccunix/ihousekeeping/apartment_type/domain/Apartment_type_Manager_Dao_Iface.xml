@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ccunix.ihousekeeping.apartment_type.dao.Apartment_type_Manager_Dao_Iface">
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.apartment_type.domain.Apartment_type_Manager"
+		id="result_apartment_type" />
+	<parameterMap
+		type="com.ccunix.ihousekeeping.apartment_type.domain.Apartment_type_Manager"
+		id="param_apartment_type" />
+	<select id="queryAll_apartment_type_manager"
+		parameterMap="param_apartment_type" resultMap="result_apartment_type">
+		select rownum num,
+		id,APARTMENT_NAME_T,APARTMENT_NAME_C,APARTMENT_NAME_W,APARTMENT_NAME_S
+		from t_u_apartment_type where
+		is_delete !=1
+
+
+		<if test="apartment_name_t != null and apartment_name_t != ''">
+			and apartment_name_t=#{apartment_name_t}
+		</if>
+		<if test="apartment_name_c != null and apartment_name_c != ''">
+			and apartment_name_c=#{apartment_name_c}
+		</if>
+		<if test="apartment_name_w != null and apartment_name_w != ''">
+			and apartment_name_w=#{apartment_name_w}
+		</if>
+		<if test="apartment_name_s != null and apartment_name_s != ''">
+			and apartment_name_s=#{apartment_name_s}
+		</if>
+		<if test="id != null and id != ''">
+			and id=#{id}
+		</if>
+		<if test="deletetime != null and deletetime != ''">
+			and deletetime=#{deletetime}
+		</if>
+		<if test="is_delete != null and is_delete != ''">
+			and is_delete=#{is_delete}
+		</if>
+		<if test="updatetime != null and updatetime != ''">
+			and updatetime=#{updatetime}
+		</if>
+		<if test="createtime != null and createtime != ''">
+			and createtime=#{createtime}
+		</if>
+		<if test="updater != null and updater != ''">
+			and updater=#{updater}
+		</if>
+		<if test="creator != null and creator != ''">
+			and creater=#{creater}
+		</if>
+		<if test="delete_user != null and delete_user != ''">
+			and delete_user=#{delete_user}
+		</if>
+	</select>
+
+
+
+</mapper>

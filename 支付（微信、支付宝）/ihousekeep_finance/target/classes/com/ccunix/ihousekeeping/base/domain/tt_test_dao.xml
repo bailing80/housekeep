@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.base.dao.TT_TEST_DAO_Iface">
+
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+	<resultMap type="com.ccunix.ihousekeeping.base.domain.TestBean"
+		id="bean"></resultMap>
+
+
+	<insert id="insert">
+		insert into test (id,is_delete,name,birth)
+		values
+		('t',0,'t',sysdate)
+	</insert>
+
+
+	<select id="query" resultMap="bean">
+		select id,is_delete age,name from
+		test
+	</select>
+
+</mapper>

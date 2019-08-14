@@ -1,0 +1,227 @@
+header{
+	text-align: right;
+	height: 5vw;
+	padding-top: 2vw;
+	padding-right: 10vw;
+}
+.searchImg{
+	width: 3vw;
+	height: 3vw;
+}
+.searchInput{
+	font-size: 20px;
+}
+.nav-tabs {
+	border: none;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover{
+	border: none;
+	background-color: #FAFAFA;
+	/*color: #23527C;*/
+	border-bottom: 2px solid #ECECEC;
+}
+html input[disabled] {
+    cursor: default;
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid;
+}
+.carmodeUl{
+	margin: 10px 10px 0 10px;
+	border:1px solid #797979;
+	background-color: #F2F2F1;
+}
+.carmodeLi{
+	width: 33.333vw;
+	/*margin: 10px;*/
+	border-right: 1px solid #797979;
+}
+.displayUl .carmodeLi a{
+	padding: 0;
+	margin: 0;
+	color: #333333;
+}
+.displayUl{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+.titleDiv{
+	padding: 10px 1vw;
+}
+.kindName{
+	display: block;
+	color: #438eb9;
+}
+.carKindimg{
+	width: 14vw;
+	height: 8vw;
+}
+.carinputUl{
+	list-style: none;
+	padding: 0;
+	margin-left: 10px;
+	font-size: 12px;
+}
+.carinputLi{
+	list-style: none;
+	/*margin-top: 10px;*/
+}
+.input_lg{
+	width: 4vw;
+}
+.opt_btn_div{
+	display: flex;
+	justify-content: space-around;
+	padding: 10px 2vw;
+	border-top:1px dashed #797979;
+}
+.my_btn{
+	border: none;
+	border-radius: 0;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: rgba(255,255,255,0.1);
+
+}
+.update_div{
+	border-right: 1px solid #000000;
+	padding-right: 20px;
+}
+.update_btn{
+	color: #797979;
+}
+
+.add_btn{
+	width: 10vw;
+	color: #FFFFFF;
+	background-color: #FFCC66;
+	border-radius: 15px;
+}
+.tab-content{
+	text-align: left;
+}
+.cardata_li{
+	padding-left: 6vw;
+	font-size: 18px;
+}
+.car_data{
+	margin-left: 3vw;
+	width: 55vw;
+} 
+
+.carImg{
+	width: 6vw;
+	height: 6vw;
+}
+.show_tab{
+	font-weight: normal;
+	border: 1px solid #797979;
+	width: 6vw;
+	border-radius: 8px;
+}
+.errDiv{
+	width: 100%;
+	text-align: center;
+}
+.errh4{
+	color: #999999;
+}
+.from_input{
+	width: auto;
+	margin-left: 10px;
+}
+.upload_span{
+	padding: 2px 10px;
+	margin-left: 10px;
+	background-color: #5CB85C;
+	color: #FFFFFF;
+	border-radius: 5px;
+}
+.error{
+	color: red;
+}
+
+
+
+.width5floatright{
+	width: 10vw;
+	text-align: right;
+}
+
+.borderOnlytop{
+	border-bottom: none;
+	border-right: none;
+	border-left: none;
+}
+.bordertopnone{
+	border: 1px solid #797979;
+	border-top: none;
+}
+.bodernone{
+	border: none;
+}
+.flexstart{
+	justify-content: flex-start;
+}
+.padding0{
+	padding: 0;
+}
+.fontsize{
+	font-size: 20px;
+	font-weight: bold;
+}
+.padding10px{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.paddingleftright4%{
+	padding: 0 4%;
+}
+.margin10px{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.margin20px{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.marginleft10px{
+	margin-left: 10px;
+}
+.paddingleft135px{
+	padding-left: 135px;
+}
+.bordercolor797979{
+	border-color: #797979;
+}
+.bordercolorececec{
+	border-color: #ececec;
+}
+.colorececec{
+	color: #ececec;
+}
+.color999{
+	color: #999;
+}
+.borderbottom{
+	border-bottom: 2px solid #ececec;
+}
+.width20vw{
+	width: 20vw;
+}
+.width196px{
+	width: 196px;
+}
+.backgroundffffff{
+	background-color: #FFFFFF;
+}
+.justifyspace{
+	justify-content: space-between;
+}
+.justifyflexstart{
+	justify-content: flex-start;
+}
+.textalignleft{
+	text-align: left;
+}

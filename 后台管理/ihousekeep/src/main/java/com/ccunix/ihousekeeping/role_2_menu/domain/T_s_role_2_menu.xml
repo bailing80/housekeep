@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.role_2_menu.dao.T_s_role_2_menu_Dao_Iface_r" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.role_2_menu.domain.T_s_role_2_menu" id="result_T_s_role_2_menu"/>
+<parameterMap type="com.ccunix.ihousekeeping.role_2_menu.domain.T_s_role_2_menu" id="param_T_s_role_2_menu"/>
+<insert id="insert_t_s_role_2_menu" parameterMap="param_T_s_role_2_menu" >
+
+insert into t_s_role_2_menu   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="role_id != null and role_id != ''">
+role_id,
+ </if>
+<if test="menu_id != null and menu_id != ''">
+menu_id,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="role_id != null and role_id != ''">
+#{role_id},
+ </if>
+<if test="menu_id != null and menu_id != ''">
+#{menu_id},
+ </if>
+
+</trim>
+</insert>
+
+<update id="delete_t_s_role_2_menu2" parameterMap="param_T_s_role_2_menu" >
+update t_s_role_2_menu set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="delete_t_s_role_2_menu" parameterMap="param_T_s_role_2_menu" >
+update t_s_role_2_menu set is_delete=1,deletetime=sysdate where  menu_id=#{menu_id}
+</update>
+<update id="update_t_s_role_2_menu" parameterMap="param_T_s_role_2_menu" >update t_s_role_2_menu   
+
+<set>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="role_id != null and role_id != ''">
+role_id=#{role_id},
+ </if>
+<if test="menu_id != null and menu_id != ''">
+menu_id=#{menu_id},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_s_role_2_menu" parameterMap="param_T_s_role_2_menu"  resultMap="result_T_s_role_2_menu">
+select ID,DELETETIME,IS_DELETE,UPDATETIME,CREATETIME,CREATOR,UPDATER,DELETE_USER,ROLE_ID,MENU_ID
+ from t_s_role_2_menu where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="role_id != null and role_id != ''">
+ and role_id=#{role_id}
+ </if>
+<if test="menu_id != null and menu_id != ''">
+ and menu_id=#{menu_id}
+ </if>
+</select>
+
+<select id="queryAll_t_s_role_2_menu2" parameterMap="param_T_s_role_2_menu"  resultMap="result_T_s_role_2_menu">
+select ID,DELETETIME,IS_DELETE,UPDATETIME,CREATETIME,CREATOR,UPDATER,DELETE_USER,ROLE_ID,MENU_ID
+ from t_s_role_2_menu where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="role_id != null and role_id != ''">
+ and role_id=#{role_id}
+ </if>
+<if test="menu_id != null and menu_id != ''">
+ and menu_id=#{menu_id}
+ </if>
+</select>
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_lz_order_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_lz_order" id="result_T_lz_order"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_lz_order" id="param_T_lz_order"/>
+<insert id="insert_t_lz_order" parameterMap="param_T_lz_order" >
+
+insert into t_lz_order   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+<if test="order_no != null and order_no != ''">
+order_no,
+ </if>
+<if test="order_time != null and order_time != ''">
+order_time,
+ </if>
+<if test="orde_state != null and orde_state != ''">
+orde_state,
+ </if>
+<if test="saler_id != null and saler_id != ''">
+saler_id,
+ </if>
+<if test="pay_type != null and pay_type != ''">
+pay_type,
+ </if>
+<if test="pay_money != null and pay_money != ''">
+pay_money,
+ </if>
+<if test="is_dev != null and is_dev != ''">
+is_dev,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+<if test="order_no != null and order_no != ''">
+#{order_no},
+ </if>
+<if test="order_time != null and order_time != ''">
+#{order_time},
+ </if>
+<if test="orde_state != null and orde_state != ''">
+#{orde_state},
+ </if>
+<if test="saler_id != null and saler_id != ''">
+#{saler_id},
+ </if>
+<if test="pay_type != null and pay_type != ''">
+#{pay_type},
+ </if>
+<if test="pay_money != null and pay_money != ''">
+#{pay_money},
+ </if>
+<if test="is_dev != null and is_dev != ''">
+#{is_dev},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_lz_order" parameterMap="param_T_lz_order" >
+update t_lz_order set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_lz_order" parameterMap="param_T_lz_order" >update t_lz_order   
+
+<set>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+<if test="order_no != null and order_no != ''">
+order_no=#{order_no},
+ </if>
+<if test="order_time != null and order_time != ''">
+order_time=#{order_time},
+ </if>
+<if test="orde_state != null and orde_state != ''">
+orde_state=#{orde_state},
+ </if>
+<if test="saler_id != null and saler_id != ''">
+saler_id=#{saler_id},
+ </if>
+<if test="pay_type != null and pay_type != ''">
+pay_type=#{pay_type},
+ </if>
+<if test="pay_money != null and pay_money != ''">
+pay_money=#{pay_money},
+ </if>
+<if test="is_dev != null and is_dev != ''">
+is_dev=#{is_dev},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_lz_order" parameterMap="param_T_lz_order"  resultMap="result_T_lz_order">
+select ID,CREATOR,UPDATER,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD HH24:MI:SS') CREATETIME_str,UPDATETIME,to_char(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') UPDATETIME_str,IS_DELETE,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD HH24:MI:SS') DELETETIME_str,DELETE_USER,ORDER_NO,ORDER_TIME,to_char(ORDER_TIME,'YYYY-MM-DD HH24:MI:SS') ORDER_TIME_str,ORDE_STATE,SALER_ID,PAY_TYPE,PAY_MONEY,IS_DEV
+ from t_lz_order where is_delete != 1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="order_no != null and order_no != ''">
+ and order_no=#{order_no}
+ </if>
+<if test="order_time != null and order_time != ''">
+ and order_time=#{order_time}
+ </if>
+<if test="orde_state != null and orde_state != ''">
+ and orde_state=#{orde_state}
+ </if>
+<if test="saler_id != null and saler_id != ''">
+ and saler_id=#{saler_id}
+ </if>
+<if test="pay_type != null and pay_type != ''">
+ and pay_type=#{pay_type}
+ </if>
+<if test="pay_money != null and pay_money != ''">
+ and pay_money=#{pay_money}
+ </if>
+<if test="is_dev != null and is_dev != ''">
+ and is_dev=#{is_dev}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

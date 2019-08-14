@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.map.dao.Map_H_Dao_Iface">
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+	<resultMap type="com.ccunix.ihousekeeping.map.domain.Map_H"
+		id="result_Map_H" />
+	<parameterMap type="com.ccunix.ihousekeeping.map.domain.Map_H"
+		id="param_Map_H" />
+	<select id="queryAll_map_h" parameterMap="param_Map_H"
+		resultMap="result_Map_H">
+		select rownum rownumber,ID,CREATETIME,to_char(CREATETIME,'YYYY-MM-DD
+		HH24:MI:SS')
+		CREATETIME_str,DELETE_USER,UPDATER,CREATOR,DELETETIME,to_char(DELETETIME,'YYYY-MM-DD
+		HH24:MI:SS')
+		DELETETIME_str,IS_DELETE,UPDATETIME,LONGITUDE,LATITUDE,COLOR,MESSAGE
+		from map where is_delete != 1
+		<if test="id != null and id != ''">
+			and id=#{id}
+		</if>
+		<if test="createtime != null and createtime != ''">
+			and createtime=#{createtime}
+		</if>
+		<if test="delete_user != null and delete_user != ''">
+			and delete_user=#{delete_user}
+		</if>
+		<if test="updater != null and updater != ''">
+			and updater=#{updater}
+		</if>
+		<if test="creator != null and creator != ''">
+			and creator=#{creator}
+		</if>
+		<if test="deletetime != null and deletetime != ''">
+			and deletetime=#{deletetime}
+		</if>
+		<if test="is_delete != null and is_delete != ''">
+			and is_delete=#{is_delete}
+		</if>
+		<if test="updatetime != null and updatetime != ''">
+			and updatetime=#{updatetime}
+		</if>
+		<if test="longitude != null and longitude != ''">
+			and longitude=#{longitude}
+		</if>
+		<if test="latitude != null and latitude != ''">
+			and latitude=#{latitude}
+		</if>
+		<if test="color != null and color != ''">
+			and color=#{color}
+		</if>
+		<if test="message != null and message != ''">
+			and message=#{message}
+		</if>
+	</select>
+
+	<delete id="deleteAllmap">
+		delete from map
+	</delete>
+
+</mapper>

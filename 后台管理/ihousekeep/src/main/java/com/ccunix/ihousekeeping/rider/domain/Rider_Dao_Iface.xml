@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.rider.dao.Rider_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.rider.domain.Rider" id="result_Rider"/>
+<parameterMap type="com.ccunix.ihousekeeping.rider.domain.Rider" id="param_Rider"/>
+<select id="queryAll_rider" parameterMap="param_Rider"  resultMap="result_Rider">
+select rownum rownumber,ID,CREATOR,UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER,PWD,PHONE,USER_MANAGER_ROLE_ID,NAME,IS_LOGIN,LATITUDE,LONGITUDE,ORDER_STATUE,ON_TIME,OFF_TIME,PHOTO_URL,RIDER_CODE,RIDER_SUM,IS_EXCELLENT,SHOW_ORDER,LINK_PIC,IS_SHOW,IS_SHOW_LINK,IS_HAVELEADER,LEADER_ROLE_ID,LEADER_ID
+ from t_u_rider where is_delete != 1
+ <if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+<if test="pwd != null and pwd != ''">
+ and pwd=#{pwd}
+ </if>
+<if test="phone != null and phone != ''">
+ and phone=#{phone}
+ </if>
+<if test="user_manager_role_id != null and user_manager_role_id != ''">
+ and user_manager_role_id=#{user_manager_role_id}
+ </if>
+<if test="name != null and name != ''">
+ and name=#{name}
+ </if>
+<if test="is_login != null and is_login != ''">
+ and is_login=#{is_login}
+ </if>
+<if test="latitude != null and latitude != ''">
+ and latitude=#{latitude}
+ </if>
+<if test="longitude != null and longitude != ''">
+ and longitude=#{longitude}
+ </if>
+<if test="order_statue != null and order_statue != ''">
+ and order_statue=#{order_statue}
+ </if>
+<if test="on_time != null and on_time != ''">
+ and on_time=#{on_time}
+ </if>
+<if test="off_time != null and off_time != ''">
+ and off_time=#{off_time}
+ </if>
+<if test="photo_url != null and photo_url != ''">
+ and photo_url=#{photo_url}
+ </if>
+<if test="rider_code != null and rider_code != ''">
+ and rider_code=#{rider_code}
+ </if>
+<if test="rider_sum != null and rider_sum != ''">
+ and rider_sum=#{rider_sum}
+ </if>
+<if test="is_excellent != null and is_excellent != ''">
+ and is_excellent=#{is_excellent}
+ </if>
+<if test="show_order != null and show_order != ''">
+ and show_order=#{show_order}
+ </if>
+<if test="link_pic != null and link_pic != ''">
+ and link_pic=#{link_pic}
+ </if>
+<if test="is_show != null and is_show != ''">
+ and is_show=#{is_show}
+ </if>
+<if test="is_show_link != null and is_show_link != ''">
+ and is_show_link=#{is_show_link}
+ </if>
+<if test="is_haveleader != null and is_haveleader != ''">
+ and is_haveleader=#{is_haveleader}
+ </if>
+<if test="leader_role_id != null and leader_role_id != ''">
+ and leader_role_id=#{leader_role_id}
+ </if>
+<if test="leader_id != null and leader_id != ''">
+ and leader_id=#{leader_id}
+ </if>
+</select>
+
+
+
+</mapper>

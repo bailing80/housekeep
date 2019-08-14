@@ -1,0 +1,12 @@
+driver=oracle.jdbc.driver.OracleDriver
+#url=jdbc:oracle:thin:@222.169.194.215:1521:orcl
+url=jdbc:oracle:thin:@39.104.159.3:1521:dxxcdb
+#url=jdbc:oracle:thin:@124.235.118.12:1521:backdb
+#url=jdbc:oracle:thin:@39.104.159.3:1521:dxxcdb
+username=dxxconline
+password=dxxc20181008
+initialSize=0
+maxActive=20
+maxIdle=20
+minIdle=1
+maxWait=60000

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccunix.ihousekeeping.basedb.dao.T_s_system_param_Dao_Iface" >
+<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+<resultMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_system_param" id="result_T_s_system_param"/>
+<parameterMap type="com.ccunix.ihousekeeping.basedb.domain.T_s_system_param" id="param_T_s_system_param"/>
+<insert id="insert_t_s_system_param" parameterMap="param_T_s_system_param" >
+
+insert into t_s_system_param   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="s_key != null and s_key != ''">
+s_key,
+ </if>
+<if test="s_value != null and s_value != ''">
+s_value,
+ </if>
+<if test="s_discription != null and s_discription != ''">
+s_discription,
+ </if>
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="creator != null and creator != ''">
+creator,
+ </if>
+<if test="updater != null and updater != ''">
+updater,
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime,
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime,
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete,
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime,
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="s_key != null and s_key != ''">
+#{s_key},
+ </if>
+<if test="s_value != null and s_value != ''">
+#{s_value},
+ </if>
+<if test="s_discription != null and s_discription != ''">
+#{s_discription},
+ </if>
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="creator != null and creator != ''">
+#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+#{delete_user},
+ </if>
+
+</trim>
+</insert>
+
+
+<update id="delete_t_s_system_param" parameterMap="param_T_s_system_param" >
+update t_s_system_param set is_delete=1,deletetime=sysdate where  id=#{id}
+</update>
+<update id="update_t_s_system_param" parameterMap="param_T_s_system_param" >update t_s_system_param   
+
+<set>
+<if test="s_key != null and s_key != ''">
+s_key=#{s_key},
+ </if>
+<if test="s_value != null and s_value != ''">
+s_value=#{s_value},
+ </if>
+<if test="s_discription != null and s_discription != ''">
+s_discription=#{s_discription},
+ </if>
+<if test="creator != null and creator != ''">
+creator=#{creator},
+ </if>
+<if test="updater != null and updater != ''">
+updater=#{updater},
+ </if>
+<if test="createtime != null and createtime != ''">
+createtime=#{createtime},
+ </if>
+<if test="updatetime != null and updatetime != ''">
+updatetime=#{updatetime},
+ </if>
+<if test="is_delete != null and is_delete != ''">
+is_delete=#{is_delete},
+ </if>
+<if test="deletetime != null and deletetime != ''">
+deletetime=#{deletetime},
+ </if>
+<if test="delete_user != null and delete_user != ''">
+delete_user=#{delete_user},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_t_s_system_param" parameterMap="param_T_s_system_param"  resultMap="result_T_s_system_param">
+select S_KEY,S_VALUE,S_DISCRIPTION,ID,CREATOR,UPDATER,CREATETIME,UPDATETIME,IS_DELETE,DELETETIME,DELETE_USER
+ from t_s_system_param where is_delete != 1<if test="s_key != null and s_key != ''">
+ and s_key=#{s_key}
+ </if>
+<if test="s_value != null and s_value != ''">
+ and s_value=#{s_value}
+ </if>
+<if test="s_discription != null and s_discription != ''">
+ and s_discription=#{s_discription}
+ </if>
+<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="creator != null and creator != ''">
+ and creator=#{creator}
+ </if>
+<if test="updater != null and updater != ''">
+ and updater=#{updater}
+ </if>
+<if test="createtime != null and createtime != ''">
+ and createtime=#{createtime}
+ </if>
+<if test="updatetime != null and updatetime != ''">
+ and updatetime=#{updatetime}
+ </if>
+<if test="is_delete != null and is_delete != ''">
+ and is_delete=#{is_delete}
+ </if>
+<if test="deletetime != null and deletetime != ''">
+ and deletetime=#{deletetime}
+ </if>
+<if test="delete_user != null and delete_user != ''">
+ and delete_user=#{delete_user}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

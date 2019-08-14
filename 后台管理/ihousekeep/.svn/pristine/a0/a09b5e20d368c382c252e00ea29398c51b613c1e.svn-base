@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.ccunix.ihousekeeping.minprog_main.dao.Minprog_main_Dao_Iface">
+	<cache type="com.ccunix.ihousekeeping.base.util.RedisCache" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.advertisement_item.domain.Advertisement_item"
+		id="param_Advertisement_item" />
+
+	<resultMap
+		type="com.ccunix.ihousekeeping.minprog_main.domain.Coupon" id="Coupon" />
+	<resultMap
+		type="com.ccunix.ihousekeeping.minprog_main.domain.House" id="House" />
+
+	<parameterMap
+		type="com.ccunix.ihousekeeping.base.domain.Base_Model_Business"
+		id="Base_Model_Business" />
+
+	<select id="queryAll_Advertisement_item"
+		resultMap="param_Advertisement_item">
+		select ID,ITEM_URL,SEC_URL from T_S_ADVERTISEMENT_ITEM
+		where
+		IS_SEC_LINK = '01' AND IS_DELETE !='1'
+
+	</select>
+
+	<select id="queryBy_Coupon" resultMap="Coupon"
+		parameterMap="Base_Model_Business">
+		SELECT
+		T_U_COUPON_TYPE.TYPE_NAME,T_U_COUPON_TYPE.BACK_PIC,T_U_COUPON.MONEY,T_U_COUPON_MANAGER.COUPON_PROJECT_NAME,T_U_COUPON.TO_VOID_TIME,T_U_COUPON.ID
+		FROM
+		T_U_COUPON,T_U_COUPON_TYPE,T_U_COUPON_MANAGER
+		WHERE
+		T_U_COUPON.IS_DELETE !=1 AND T_U_COUPON.COUPON_TYPE_ID =
+		T_U_COUPON_TYPE.ID AND
+		T_U_COUPON.COUPON_MANAGER_ID =
+		T_U_COUPON_MANAGER.ID AND T_U_COUPON.USED_MEMBER=#{id}
+	</select>
+	<select id="queryBy_House" resultMap="House"
+		parameterMap="Base_Model_Business">
+		SELECT
+		T.ID,T.ADDRESS,T.TRUE_AREA,T.APARTMENT_NAME_S,T.APARTMENT_NAME_T,T.APARTMENT_NAME_C,T.APARTMENT_NAME_W,T.OVER_TIME
+		FROM
+		(SELECT
+		ROW_NUMBER()OVER(ORDER BY T_U_ORDER.ORDER_OVER_TIME DESC)
+		ROWNUMBER,T_U_MEMBER_ADDRESS.ID,
+		T_U_MEMBER_ADDRESS.ADDRESS,T_U_MEMBER_ADDRESS.TRUE_AREA,T_U_APARTMENT_TYPE.APARTMENT_NAME_S,T_U_APARTMENT_TYPE.APARTMENT_NAME_T,
+		T_U_APARTMENT_TYPE.APARTMENT_NAME_C,T_U_APARTMENT_TYPE.APARTMENT_NAME_W,
+		TO_CHAR(TO_DATE (T_U_ORDER.ORDER_OVER_TIME,'yyyy-mm-dd
+		hh24:mi:ss')-TO_DATE(SYSDATE,'yyyy-mm-dd hh24:mi:ss')) OVER_TIME
+		FROM
+		T_U_MEMBER_ADDRESS,T_U_APARTMENT_TYPE,T_U_ORDER
+		WHERE
+		T_U_MEMBER_ADDRESS.APARTMENT_ID = T_U_APARTMENT_TYPE.ID AND
+		T_U_ORDER.MEMBER_ID =
+		T_U_MEMBER_ADDRESS.ID AND
+		T_U_MEMBER_ADDRESS.IS_DELETE!=1 AND T_U_MEMBER_ADDRESS.ID = #{id}) T
+		WHERE T.ROWNUMBER =1
+	</select>
+
+	<select id="queryAll_House" resultMap="House"
+		parameterMap="Base_Model_Business">
+		SELECT
+		T_U_MEMBER_ADDRESS.ID,
+		T_U_MEMBER_ADDRESS.ADDRESS,T_U_MEMBER_ADDRESS.TRUE_AREA,T_U_APARTMENT_TYPE.APARTMENT_NAME_S,T_U_APARTMENT_TYPE.APARTMENT_NAME_T,
+		T_U_APARTMENT_TYPE.APARTMENT_NAME_C,T_U_APARTMENT_TYPE.APARTMENT_NAME_W,
+		TO_CHAR(TO_DATE (T_U_ORDER.ORDER_OVER_TIME,'yyyy-mm-dd
+		hh24:mi:ss')-TO_DATE(SYSDATE,'yyyy-mm-dd hh24:mi:ss')) OVER_TIME
+		FROM
+		T_U_MEMBER_ADDRESS,T_U_APARTMENT_TYPE,T_U_ORDER
+		WHERE
+		T_U_MEMBER_ADDRESS.APARTMENT_ID = T_U_APARTMENT_TYPE.ID AND
+		T_U_ORDER.MEMBER_ID =
+		T_U_MEMBER_ADDRESS.ID AND
+		T_U_MEMBER_ADDRESS.IS_DELETE!=1 AND T_U_MEMBER_ADDRESS.ID = #{id}
+	</select>
+
+</mapper>
